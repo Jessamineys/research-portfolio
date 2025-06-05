@@ -184,12 +184,10 @@
         .profile-card:hover {
             transform: rotate(0deg) scale(1.02);
         }
-        
-        }
 
         .profile-img {
-            width: 100px;
-            height: 100px;
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
             background: var(--gradient);
             margin: 0 auto 1rem;
@@ -202,11 +200,21 @@
             position: relative;
         }
 
+        /* Profile image styles */
         .profile-img img {
-            width: 100%;
-            height: 100%;
+            width: 200px;
+            height: 200px;
             object-fit: contain;
             border-radius: 50%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: var(--gradient);
+        }
+
+        /* Fallback when no image is provided */
+        .profile-img.no-image {
+            background: var(--gradient);
         }
 
         /* About Section */
@@ -500,7 +508,8 @@
                 <div class="hero-image">
                     <div class="profile-card">
                         <div class="profile-img" id="profileImage">
-                            <img src="SFN-2022-pic.jpg" alt="Jessamine Li" onerror="this.style.display='none'; this.parentElement.innerHTML='👋'; this.parentElement.classList.add('no-image');">
+                            <!-- Replace 'your-photo.jpg' with the path to your actual image -->
+                            <img src="your-photo.jpg" alt="Jessamine Li" onerror="this.style.display='none'; this.parentElement.innerHTML='👋'; this.parentElement.classList.add('no-image');">
                         </div>
                         <h3 style="text-align: center; margin-bottom: 0.5rem;">Jessamine Li</h3>
                         <p style="text-align: center; color: var(--text-secondary);">UX Researcher</p>
