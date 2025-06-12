@@ -1,0 +1,47 @@
+# .github/workflows/compile-cv.yml
+name: Compile LaTeX CV
+
+on:
+  push:
+    paths:
+      - 'CV/**'
+      - '.github/workflows/compile-cv.yml'
+  pull_request:
+    paths:
+      - 'CV/**'
+
+jobs:
+  compile-latex:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Compile LaTeX document
+      uses: xu-cheng/latex-action@v3
+      with:
+        root_file: jessamine_Li_CV_industry.tex
+        working_directory: CV/
+        args: -pdf -file-line-error -halt-on-error -interaction=nonstopmode
+        
+    - name: Rename output file
+      run: |
+        cd CV/
+        mv jessamine_Li_CV_industry.pdf Jialin-Li-CV.pdf
+        
+    - name: Upload PDF artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: cv-pdf
+        path: CV/Jialin-Li-CV.pdf
+        
+    - name: Commit and push PDF
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add CV/Jialin-Li-CV.pdf
+        git diff --staged --quiet || git commit -m "Auto-update CV PDF [skip ci]"
+        git push
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
