@@ -1,0 +1,332 @@
+%-------------------------
+% Resume in Latex
+% Author : Jake Gutierrez
+% Based off of: https://github.com/sb2nov/resume
+% License : MIT
+%------------------------
+% last update: 2023/06
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{fontawesome5}
+\usepackage{multicol}
+\setlength{\multicolsep}{-3.0pt}
+\setlength{\columnsep}{-1pt}
+\input{glyphtounicode}
+
+
+%----------FONT OPTIONS----------
+% sans-serif
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
+
+% serif
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
+
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\usepackage[letterpaper, left=0.4in, right=1.5in, top=0.3in, bottom=1.7in]{geometry}
+% \addtolength{\oddsidemargin}{-0.6in}
+% \addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1.19in}
+% \addtolength{\topmargin}{-0.9in}
+\addtolength{\textheight}{1.4in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large\bfseries
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\classesList}[4]{
+    \item\small{
+        {#1 #2 #3 #4 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & \textbf{\small #2} \\
+      % \textit{\small#3} & \textit{\small #4} \\
+      \small#3 & \small #4 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{1.001\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & \textbf{\small #2}\\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemi{$\vcenter{\hbox{\tiny$\bullet$}}$}
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.0in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+%----------HEADING----------
+% \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+%   \textbf{\href{http://sourabhbajaj.com/}{\Large Sourabh Bajaj}} & Email : \href{mailto:sourabh@sourabhbajaj.com}{sourabh@sourabhbajaj.com}\\
+%   \href{http://sourabhbajaj.com/}{http://www.sourabhbajaj.com} & Mobile : +1-123-456-7890 \\
+% \end{tabular*}
+
+\begin{center}
+    {\huge \scshape Jessamine (Jialin) Li} \\ \vspace{1pt}
+   % \href{https://linkedin.com/in//}{\raisebox{-0.2\height}\faLinkedin\ \underline{linkedin.com/in/username}}  ~
+%    \href{https://github.com/}{\raisebox{-0.2\height}\faGithub\ \underline{github.com/username}}
+\small 802-424-6870 $|$ \href{mailto:jialinli2022@gmail.com}{\underline{jialinli2022@gmail.com}} $|$
+    \href{https://drive.google.com/file/d/1YKK-KWSVWAUzx54oubQwrf9IYxWK2dGi/view}{\color{blue}{\underline{Portfolio/Research Report}}}$|$
+    \href{https://www.linkedin.com/in/jessamine-li/}{\small{\color{blue}\underline{LinkedIn}}} 
+    \vspace{-8pt}
+\end{center}
+
+%-----------Education---------
+\vspace{-15pt}
+\section{Education}
+%diploma, academic or professional training, online courses
+%\vspace{5pt}
+  \resumeSubHeadingListStart
+
+  \vspace{-3pt}
+    \resumeSubheading
+      {University of Washington, Seattle}{Seattle, WA}
+      {MS in Human-Centered Design \& Engineering (HCDE)}{09/2023 -- Present}
+      \resumeItemListStart
+        \resumeItem{GPA: 3.95/4}
+        \resumeItemListEnd
+  \vspace{-3pt}        
+      \resumeSubheading
+      {University of California, Berkeley}{Berkeley, CA}
+      {BA in Psychology and Cognitive Science, minor in Data Science}{12/2022}
+      \resumeItemListStart
+        \resumeItem{GPA: 3.85/4}
+      \resumeItemListEnd
+
+
+  \resumeSubHeadingListEnd
+
+  %-----------papers-----------
+
+
+\vspace{-15pt}   
+\section{Professional Experience}
+  \resumeSubHeadingListStart
+
+\resumeSubheading
+{Verdigris Technologies, Inc.}{Los Altos, CA}
+{Product Intern}{04/2024 -- 09/2024}
+\resumeItemListStart
+\resumeItem{Increased user engagement by 10\% by leading cross-functional collaboration in delivering AI-powered energy and automation solutions, driving alignment with market opportunities in a fast-paced, resource-constrained environment}
+\resumeItem{Released 7 features with clear requirement definitions, using quantitative product metrics \& qualitative customer insights}
+\resumeItem{Increased feature adoption by 7\% through optimized release notes, user guides, and customer-facing collaboration}
+\resumeItem{Drove broader product roadmap and priority alignment with customer insights in 6 customer success sessions}
+\resumeItemListEnd
+
+\resumeSubheading
+      {SAP Labs, LLC}{Newport Beach, CA}
+      {UX Research Intern}{02/2022 -- 05/2023}
+      \resumeItemListStart
+      % \resumeItem{Conducted user research and assisted design iteration in the revenue growth management enterprise software space}
+      \resumeItem{Facilitated mixed-methods data-driven user research to inform business goals and design solutions in consumer product enterprise softwares (\href{https://www.sap.com/products/financial-management/revenue-growth-optimization.html}{{\color{blue}\underline{SAP Revenue Growth Management}}}), with a 25\% uplift in usability metrics}
+      \resumeItem{Conducted 25 research studies through user interviews, usability evaluations, and surveys, using Qualtrics, Figma, etc.}
+      \resumeItem{Translated research insights into actionable opportunities, pinpointing knowledge gaps for focused research efforts}
+      % \resumeItem{Built and maintained solid relationships with co-innovation internal and external partners in design workshops}
+      \resumeItem{Clearly presented complex findings to cross-functional stakeholders in sprint reviews, influencing product roadmap}
+      % Facilitated analyses, translating complex data into actionable insights for product iteration, and communicated findings in agile sprint reviews to optimize stakeholder decision-making
+         % \resumeItem{Led research syntheses and generated findings from interviews, surveys, and design workshops for design iterations}
+         % \resumeItem{Presented data-driven research findings and digestible iteration recommendations to stakeholders in sprint-reviews}
+        % \resumeItem{Increased end-user pool by \textbf{35\%} by enhancing recruiting strategies with Respondent and LinkedIn Sales Navigator}
+         \resumeItem{Built a research repository with research insights and design solutions, cutting product alignment meetings by 30\%}
+    \resumeItemListEnd
+    
+
+    \resumeSubheading
+      {TikTok Ltd.}{Beijing, China}
+      {Enterprise SaaS Product Consulting Intern}{05/2021 -- 07/2021}
+      \resumeItemListStart
+      \resumeItem{Leveraged strong interpersonal and communication skills to tailor and implement the OKR framework in an HR SaaS product for Fortune China 500 clients, aligning with their strategic goals and enhancing adoption and collaboration}
+%         \resumeItem{Assisted the development of SaaS product (Lark EHR suite) through consulting sessions with and secondary
+% research on key account business customers}
+        \resumeItem{Assisted competitive and market research to inform execution roadmap and strategy for customer consulting sessions}
+        \resumeItem{Facilitated customer workshops with sales and customer success stakeholders' insights to tackle business challenges}
+        
+    \resumeItemListEnd
+    \resumeSubHeadingListEnd
+
+
+\vspace{-15pt}
+
+%-----------Research-----------
+\section{Research Experience}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {PULSE Lab, University of Washington}{Seattle, WA}
+      {Graduate Research Assistant; Advisor: Dr. Spencer Williams}{02/2024 -- Present}
+\resumeItemListStart
+    \resumeItem{Studied how crowdsourcing participants’ online communication reflects perceptions of studies, researchers and science}
+    \resumeItem{Reviewed literature on compensated and citizen science to identify gaps in crowdsourcing participants' perceptions}
+    \resumeItem{Collected and combined 2-month r/ProlificAC post and comment data by using Reddit API and Python scripts}
+    \resumeItem{Developed a comprehensive codebook with the second author by conducting a thematic analysis on over 1,600 posts}
+    \resumeItem{Drafted, submitted, and secured approval for an IRB application to ensure compliance with ethical research standards}
+    \resumeItem{Mentored undergraduate students in designing experiments, setting up data analysis pipelines, and writing papers}
+       \resumeItemListEnd
+   
+  \resumeSubheading
+       {Safe Water Equity \& Longevity Lab, University of Washington}{Seattle, WA}
+       {Graduate Research Assistant; Advisor: Dr. Katya Cherukumilli}{01/2024 -- Present}
+       \resumeItemListStart
+         \resumeItem{Investigated complex communication and decision-making processes in collaborative drinking water infrastructure management at public institutions, focusing on user perceptions, operations, and building water fixtures status quo}
+        \resumeItem{Interviewed 12 building coordinators and conducted thematic analysis on challenges, motivations, and impacts of building drinking water management; designed training modules and an interactive water map to crowdsourse user-reported issues}
+         \resumeItem{Collected public water infrastructure data through field studies in 50 campus buildings, creating a centralized database to support stakeholder interviews, drinking water testing, and comprehensive analysis and reporting}
+         \resumeItem{Constructed, tested, and distributed building-specific drinking water user surveys on satisfactions and sensorial perceptions using Qualtrics, receiving over 900 responses; cleaned, analyzed, and visualized the data using Python}
+       \resumeItemListEnd
+       
+\vspace{30pt}   
+  \resumeSubheading
+       {The Cognition and Action Lab, University of California Berkeley}{Berkeley, CA}
+       {Undergraduate Research Assistant; Advisor: Dr. Richard Ivry}{08/2021 -- 12/2022}
+       \resumeItemListStart
+         \resumeItem{Investigated the influence of divided and spatial attention on human implicit motor execution process}
+        \resumeItem{Reviewed literature on explicit and implicit motor learning to assist research design, methodology, and data analysis}
+         \resumeItem{Recruited over 900 healthy participants (Prolific and Psychology students) and collected their motor behavior data}
+         % \resumeItem{Created \& continually iterated \textbf{complex software testing protocols} in 8 studies}
+         \resumeItem{Assisted in deploying 20+ versions of online motor learning experiment on Google Firebase using HTML and JavaScript}
+         \resumeItem{Drafted and presented a poster showcasing research findings at the Neuroscience 2022 Conference in San Diego, CA}
+       \resumeItemListEnd
+       
+% \vspace{-1pt}           
+ \resumeSubheading
+      {Student Experience in the Research University (SERU), UC Berkeley}{Berkeley, CA}
+      {Undergraduate Research Assistant; Advisor: Dr. Igor Chirikov}{08/2021 -- 12/2022}
+      \resumeItemListStart
+        \resumeItem{Investigated socioeconomic disparities in undergraduate research engagement across 37 public universities over 10 years}
+        \resumeItem{Analyzed millions of survey responses with Python to uncover insights into demographics and research engagement}
+        \resumeItem{Developed an interactive data visualization dashboard to clearly present complex insights to diverse stakeholders}
+        \resumeItem{Presented insightful 10-year trends to policymakers from 22 public universities and over 50 SERU researchers}
+      \resumeItemListEnd
+ 
+ \resumeSubheading
+      {Yang Lab, Shanghai Mental Health Center}{Shanghai, China}
+      {Research Assistant; PI: Dr. Zhi Yang}{05/2019 -- 05/2021}
+      \resumeItemListStart
+        \resumeItem{Studied how generalized anxiety disorder (GAD) \& social anxiety disorder (SAD) affect adolescent cognitive development}
+        \resumeItem{Facilitated 60+ experiments to collect and compile EEG data during cognitive tasks from SAD/GAD adolescent patients}
+        \resumeItem{Assisted mix-methods studies on the effectiveness of home-based cognitive training for healthy adults, analyzing cognitive assessment results to measure improvement}
+        \resumeItem{Conducted literature review on cognitive training protocols and assessments for 6 cognitive functions, establishing research design and data cleaning, and analysis methods}
+      \resumeItemListEnd
+
+ 
+ \resumeSubheading
+      {Berkeley Early Learning Lab, University of California Berkeley}{Berkeley, CA}
+      {Research Assistant; PI: Dr. Fei Xu}{01/2019 -- 12/2019}
+      \resumeItemListStart
+        \resumeItem{Investigated children versus adult application of optimal and general mental strategies in lab setting and virtually}
+        \resumeItem{Recruited 50+ families and their children through emails and phone calls with constant iteration to reach out to more}
+        \resumeItem{Created and continually updated a family database on lab server and existing testing \& analysis protocols}
+      \resumeItemListEnd
+        \resumeSubHeadingListEnd
+
+
+\vspace{-15pt}
+\section{Publication and Manuscripts}
+\resumeSubHeadingListStart
+\vspace{-7pt}
+      \resumeProjectHeading
+    {\textbf{Preprints} }{}
+        \resumeItemListStart
+        \resumeItem{Tianhe Wang, \underline{Jialin Li}, Richard Ivry (2024). Attention defines the context for implicit sensorimotor adaptation. bioRxiv, 2024-09. \href{https://doi.org/10.1101/2024.09.03.611108}{{\color{blue}https://doi.org/10.1101/2024.09.03.611108}}}(under review at Journal of Neuroscience)
+        \resumeItemListEnd
+    \resumeSubHeadingListEnd
+
+\resumeSubHeadingListStart
+\vspace{-30pt}
+      \resumeProjectHeading
+    {\textbf{Conference Presentations} }{}
+        \resumeItemListStart
+    \resumeItem{\textup{Tianhe Wang, \underline{Jialin Li} (Presenter), Richard Ivry.} The Influence of Attention on Motor Learning. Society for Neuroscience. San Diego, CA, 11/2022}
+    % \vspace{-5pt}
+    \resumeItem{Igor Chirikov, Matilda Ju*, \underline{Jialin Li}*, Sam Tan*. (Symposium Presentation) Socioeconomic Disparities in Undergraduate Research Engagement over 10 Years. SERU Research Symposium. 06/2022 *equal contributions}
+        \resumeItemListEnd
+    \resumeSubHeadingListEnd
+    
+\vspace{-30pt}
+     \resumeSubHeadingListStart
+      \resumeProjectHeading
+    {\textbf{Manuscripts} }{}
+        \resumeItemListStart
+        \resumeItem{\underline{Jialin Li}, Katya Cherukumilli. (in preparation). Safe Drinking Water Provision at Universities}
+        \resumeItem{\underline{Jialin Li}, Xiaowei Hu, Spencer Williams. (in preparation). Online Communication among Crowdsourcing Participants}
+        \resumeItem{\underline{Jialin Li}, Katya Cherukumilli. (in preparation). Humans as Sensors of Campus Drinking Water Safety and Sustainability}
+        \resumeItemListEnd
+        \resumeSubHeadingListEnd
+
+
+
+\vspace{-15pt} 
+%-----------PROGRAMMING SKILLS-----------
+\section{Skills}
+%\vspace{5pt}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Programming}{: Python, SQL, R, MATLAB, SPSS, HTML/CSS, JavaScript, Google Firebase, Jira, Tableau, API Integration} \\
+     \textbf{Research}{: Empirical Studies, Inferential Statistics, Interview, Statistical Modeling, Survey, Prototyping, Thematic Analysis} \\
+     \textbf{Design Skills}{: Figma, Adobe Illustrator, Photoshop, Qualtrics}\\
+     \textbf{Languages}{: English, Mandarin (Native).} \\
+    }}
+ \end{itemize}
+
+\end{document}
