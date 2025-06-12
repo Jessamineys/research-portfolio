@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Jessamine Li</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #f1f5f9;
+            --accent-color: #0ea5e9;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --white: #ffffff;
+            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --shadow-hover: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--secondary-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Navigation - Same as main site */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(226, 232, 240, 0.5);
+            box-shadow: var(--shadow);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a.active {
+            color: var(--primary-color);
+        }
+
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding-top: 100px;
+            min-height: 100vh;
+        }
+
+        .cv-header {
+            text-align: center;
+            padding: 3rem 0;
+            background: var(--white);
+            margin-bottom: 2rem;
+            border-radius: 1rem;
+            box-shadow: var(--shadow);
+        }
+
+        .cv-header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .cv-header p {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .cv-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .cv-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+
+        .cv-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+            background: #1d4ed8;
+        }
+
+        .cv-button.secondary {
+            background: var(--white);
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .cv-button.secondary:hover {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+
+        /* PDF Container */
+        .pdf-container {
+            background: var(--white);
+            border-radius: 1rem;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+
+        .pdf-viewer {
+            width: 100%;
+            height: 80vh;
+            border: none;
+            display: block;
+        }
+
+        /* Fallback message */
+        .pdf-fallback {
+            padding: 3rem;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+
+        .pdf-fallback h3 {
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        /* Loading state */
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+            color: var(--text-secondary);
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid var(--secondary-color);
+            border-top: 4px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: 1rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .cv-header h1 {
+                font-size: 2rem;
+            }
+
+            .cv-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .pdf-viewer {
+                height: 60vh;
+            }
+        }
+
+        /* Mobile menu toggle (optional) */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Jessamine Li</a>
+            <ul class="nav-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#portfolio">Work</a></li>
+                <li><a href="cv.html" class="active">CV</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-toggle">☰</button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- CV Header -->
+            <div class="cv-header">
+                <h1>Curriculum Vitae</h1>
+            </div>
+
+            <!-- PDF Viewer -->
+            <div class="pdf-container">
+                <div id="loadingIndicator" class="loading">
+                    <div class="spinner"></div>
+                    <span>Loading CV...</span>
+                </div>
+                
+                <!-- Embedded PDF Viewer -->
+                <iframe 
+                    id="pdfViewer"
+                    class="pdf-viewer" 
+                    src="CV/Jessamine_Li_CV.pdf#toolbar=1&navpanes=0&scrollbar=1&page=1&zoom=page-fit"
+                    type="application/pdf"
+                    title="Jessamine Li CV"
+                    style="display: none;">
+                </iframe>
+
+                <!-- Fallback for browsers that don't support PDF embedding -->
+                <div id="pdfFallback" class="pdf-fallback" style="display: none;">
+                    <h3>PDF Viewer Not Supported</h3>
+                    <p>Your browser doesn't support embedded PDF viewing. Please download the CV to view it.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Handle PDF loading
+        const pdfViewer = document.getElementById('pdfViewer');
+        const loadingIndicator = document.getElementById('loadingIndicator');
+        const pdfFallback = document.getElementById('pdfFallback');
+
+        // Show PDF viewer after loading
+        pdfViewer.onload = function() {
+            loadingIndicator.style.display = 'none';
+            pdfViewer.style.display = 'block';
+        };
+
+        // Handle PDF loading errors
+        pdfViewer.onerror = function() {
+            loadingIndicator.style.display = 'none';
+            pdfFallback.style.display = 'block';
+        };
+
+        // Fallback timeout in case onload doesn't fire
+        setTimeout(function() {
+            if (pdfViewer.style.display === 'none') {
+                loadingIndicator.style.display = 'none';
+                
+                // Try to detect if PDF loaded by checking if iframe has content
+                try {
+                    if (pdfViewer.contentDocument || pdfViewer.contentWindow) {
+                        pdfViewer.style.display = 'block';
+                    } else {
+                        pdfFallback.style.display = 'block';
+                    }
+                } catch (e) {
+                    // Cross-origin or other access issues - show fallback
+                    pdfFallback.style.display = 'block';
+                }
+            }
+        }, 5000);
+
+        // Mobile menu functionality (optional)
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        if (mobileMenuToggle) {
+            mobileMenuToggle.addEventListener('click', function() {
+                navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            });
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('nav')) {
+                if (window.innerWidth <= 768) {
+                    navLinks.style.display = 'none';
+                }
+            }
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                navLinks.style.display = 'flex';
+            } else {
+                navLinks.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
