@@ -231,6 +231,22 @@
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                flex-direction: column;
+                padding: 1rem 2rem;
+                box-shadow: var(--shadow);
+                border-top: 1px solid var(--secondary-color);
+            }
+            .nav-links.show {
+                display: flex;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
             }
 
             .container {
@@ -272,13 +288,13 @@
     <!-- Navigation -->
     <nav id="navbar">
         <div class="nav-container">
-            <a href="../index.html" class="logo">Jessamine Li</a>
+            <a href="/" class="logo">Jessamine Li</a>
             <ul class="nav-links">
-                <li><a href="../index.html#home">Home</a></li>
-                <li><a href="../index.html#about">About</a></li>
-                <li><a href="../index.html#portfolio">Work</a></li>
-                <li><a href="#" class="active">CV</a></li>
-                <li><a href="../index.html#contact">Contact</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/work">Work</a></li>
+                <li><a href="/cv/" class="active">CV</a></li>
+                <li><a href="/contact">Contact</a></li>
             </ul>
             <button class="mobile-menu-toggle">☰</button>
         </div>
@@ -298,7 +314,7 @@
                     <div class="spinner"></div>
                     <span>Loading CV...</span>
                 </div>
-                
+
                 <!-- Embedded PDF Viewer -->
                 <iframe 
                     id="pdfViewer"
