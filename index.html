@@ -651,89 +651,295 @@
         </div>
     </footer>
 
-    <script>
-    // Handle incoming hash fragments from other pages
-        window.addEventListener('DOMContentLoaded', function() {
-            if (window.location.hash) {
-                // Small delay to ensure page is fully loaded
-                setTimeout(function() {
-                    const target = document.querySelector(window.location.hash);
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                }, 100);
-            }
-        });
-        // Navbar scroll effect
-        window.addEventListener('scroll', function() {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
+<script>
+    // Enhanced scrolling script for better UX
+(function() {
+    'use strict';
 
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    const targetPosition = target.offsetTop - 80; // 80px offset for fixed navbar
-                    const startPosition = window.pageYOffset;
-                    const distance = targetPosition - startPosition;
-                    const duration = 1200; // Increase this number for slower scrolling (in milliseconds)
-                    let start = null;
-        
-                    function animation(currentTime) {
-                        if (start === null) start = currentTime;
-                        const timeElapsed = currentTime - start;
-                        const run = ease(timeElapsed, startPosition, distance, duration);
-                        window.scrollTo(0, run);
-                        if (timeElapsed < duration) requestAnimationFrame(animation);
-                    }
-        
-                    function ease(t, b, c, d) {
-                        t /= d / 2;
-                        if (t < 1) return c / 2 * t * t + b;
-                        t--;
-                        return -c / 2 * (t * (t - 2) - 1) + b;
-                    }
-        
+    // Configuration
+    const CONFIG = {
+        navbarHeight: 80,
+        scrollDuration: 800, // Reduced from 1200ms for snappier feel
+        scrollOffset: 20, // Additional offset for better visual spacing
+        throttleDelay: 16, // ~60fps for smooth performance
+        intersectionThreshold: 0.15,
+        intersectionRootMargin: '0px 0px -100px 0px'
+    };
+
+    // Utility functions
+    const throttle = (func, delay) => {
+        let timeoutId;
+        let lastExecTime = 0;
+        return function (...args) {
+            const currentTime = Date.now();
+            if (currentTime - lastExecTime > delay) {
+                func.apply(this, args);
+                lastExecTime = currentTime;
+            } else {
+                clearTimeout(timeoutId);
+                timeoutId = setTimeout(() => {
+                    func.apply(this, args);
+                    lastExecTime = Date.now();
+                }, delay - (currentTime - lastExecTime));
+            }
+        };
+    };
+
+    // Improved easing function (easeInOutCubic)
+    const easeInOutCubic = (t, b, c, d) => {
+        t /= d / 2;
+        if (t < 1) return c / 2 * t * t * t + b;
+        t -= 2;
+        return c / 2 * (t * t * t + 2) + b;
+    };
+
+    // Check if user prefers reduced motion
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Enhanced smooth scroll function
+    function smoothScrollTo(targetY, duration = CONFIG.scrollDuration) {
+        // Respect user's motion preferences
+        if (prefersReducedMotion) {
+            window.scrollTo(0, targetY);
+            return Promise.resolve();
+        }
+
+        return new Promise((resolve) => {
+            const startY = window.pageYOffset;
+            const distance = targetY - startY;
+            let startTime = null;
+
+            // If the distance is very small, just jump there
+            if (Math.abs(distance) < 5) {
+                window.scrollTo(0, targetY);
+                resolve();
+                return;
+            }
+
+            function animation(currentTime) {
+                if (startTime === null) startTime = currentTime;
+                const timeElapsed = currentTime - startTime;
+                const progress = Math.min(timeElapsed / duration, 1);
+                
+                const currentY = easeInOutCubic(timeElapsed, startY, distance, duration);
+                window.scrollTo(0, currentY);
+
+                if (progress < 1) {
                     requestAnimationFrame(animation);
+                } else {
+                    // Ensure we end up exactly at the target
+                    window.scrollTo(0, targetY);
+                    resolve();
+                }
+            }
+
+            requestAnimationFrame(animation);
+        });
+    }
+
+    // Handle incoming hash fragments with improved UX
+    function handleInitialHash() {
+        if (window.location.hash) {
+            // Delay to ensure page is fully loaded and styled
+            setTimeout(() => {
+                const target = document.querySelector(window.location.hash);
+                if (target) {
+                    const targetY = target.offsetTop - CONFIG.navbarHeight - CONFIG.scrollOffset;
+                    smoothScrollTo(Math.max(0, targetY), 600); // Slightly faster for initial load
+                }
+            }, 150); // Slightly longer delay for better reliability
+        }
+    }
+
+    // Enhanced navbar scroll effect with better performance
+    const handleNavbarScroll = throttle(() => {
+        const navbar = document.getElementById('navbar');
+        if (!navbar) return;
+
+        const shouldShowScrolled = window.scrollY > 50;
+        const hasScrolledClass = navbar.classList.contains('scrolled');
+
+        if (shouldShowScrolled && !hasScrolledClass) {
+            navbar.classList.add('scrolled');
+        } else if (!shouldShowScrolled && hasScrolledClass) {
+            navbar.classList.remove('scrolled');
+        }
+    }, CONFIG.throttleDelay);
+
+    // Enhanced navigation link handling
+    function setupNavigationLinks() {
+        const navLinks = document.querySelectorAll('a[href^="#"]');
+        
+        navLinks.forEach(anchor => {
+            anchor.addEventListener('click', async function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const target = document.querySelector(targetId);
+                
+                if (!target) return;
+
+                // Calculate target position with improved offset
+                const targetY = Math.max(0, target.offsetTop - CONFIG.navbarHeight - CONFIG.scrollOffset);
+                
+                // Add active state to clicked link (optional UX enhancement)
+                navLinks.forEach(link => link.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Perform smooth scroll
+                await smoothScrollTo(targetY);
+                
+                // Update URL without triggering scroll
+                if (history.pushState) {
+                    history.pushState(null, null, targetId);
                 }
             });
         });
+    }
 
-        // Form submission handler
-        document.querySelector('.contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your message! I\'ll get back to you soon.');
-            this.reset();
-        });
-
-        // Animation on scroll
+    // Enhanced intersection observer for animations and active nav states
+    function setupScrollAnimations() {
         const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+            threshold: CONFIG.intersectionThreshold,
+            rootMargin: CONFIG.intersectionRootMargin
         };
 
-        const observer = new IntersectionObserver(function(entries) {
+        // Animation observer
+        const animationObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('fade-in-up');
+                    // Unobserve once animated to improve performance
+                    animationObserver.unobserve(entry.target);
                 }
             });
         }, observerOptions);
 
-        // Observe elements for animation
-        document.querySelectorAll('.portfolio-card, .skill-card').forEach(el => {
-            observer.observe(el);
+        // Active nav state observer
+        const navStateObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Update active nav link based on current section
+                    const currentId = entry.target.id;
+                    const navLinks = document.querySelectorAll('.nav-links a');
+                    
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${currentId}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, {
+            threshold: 0.3,
+            rootMargin: '-80px 0px -60% 0px'
         });
-    </script>
+
+        // Observe elements
+        document.querySelectorAll('.portfolio-card, .skill-card').forEach(el => {
+            animationObserver.observe(el);
+        });
+
+        document.querySelectorAll('section[id]').forEach(section => {
+            navStateObserver.observe(section);
+        });
+    }
+
+    // Enhanced form handling with better UX feedback
+    function setupFormHandling() {
+        const form = document.querySelector('.contact-form');
+        if (!form) return;
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = form.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            
+            // Provide immediate feedback
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+            
+            // Simulate form processing (replace with actual form handling)
+            setTimeout(() => {
+                submitBtn.textContent = 'Message Sent!';
+                submitBtn.style.backgroundColor = '#059669'; // Green color
+                
+                // Reset form and button after delay
+                setTimeout(() => {
+                    this.reset();
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                    submitBtn.style.backgroundColor = '';
+                }, 2000);
+            }, 1000);
+        });
+    }
+
+    // Handle browser back/forward navigation
+    function setupHistoryNavigation() {
+        window.addEventListener('popstate', () => {
+            if (window.location.hash) {
+                const target = document.querySelector(window.location.hash);
+                if (target) {
+                    const targetY = target.offsetTop - CONFIG.navbarHeight - CONFIG.scrollOffset;
+                    smoothScrollTo(Math.max(0, targetY), 400);
+                }
+            }
+        });
+    }
+
+    // Add keyboard navigation support for accessibility
+    function setupKeyboardNavigation() {
+        document.addEventListener('keydown', (e) => {
+            // Allow users to navigate sections with arrow keys (when focused on nav)
+            if (document.activeElement.closest('.nav-links')) {
+                const navLinks = Array.from(document.querySelectorAll('.nav-links a'));
+                const currentIndex = navLinks.indexOf(document.activeElement);
+                
+                if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                    e.preventDefault();
+                    const nextIndex = (currentIndex + 1) % navLinks.length;
+                    navLinks[nextIndex].focus();
+                } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                    e.preventDefault();
+                    const prevIndex = currentIndex > 0 ? currentIndex - 1 : navLinks.length - 1;
+                    navLinks[prevIndex].focus();
+                }
+            }
+        });
+    }
+
+    // Initialize everything when DOM is ready
+    function init() {
+        handleInitialHash();
+        setupNavigationLinks();
+        setupScrollAnimations();
+        setupFormHandling();
+        setupHistoryNavigation();
+        setupKeyboardNavigation();
+        
+        // Attach scroll listener
+        window.addEventListener('scroll', handleNavbarScroll, { passive: true });
+    }
+
+    // Wait for DOM to be ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+
+    // Handle reduced motion preference changes
+    window.matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change', (e) => {
+        if (e.matches) {
+            // User now prefers reduced motion
+            console.log('Reduced motion preference detected');
+        }
+    });
+
+})();
+</script>
 </body>
 </html>
