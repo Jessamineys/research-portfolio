@@ -652,6 +652,21 @@
     </footer>
 
     <script>
+    // Handle incoming hash fragments from other pages
+        window.addEventListener('DOMContentLoaded', function() {
+            if (window.location.hash) {
+                // Small delay to ensure page is fully loaded
+                setTimeout(function() {
+                    const target = document.querySelector(window.location.hash);
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }, 100);
+            }
+        });
         // Navbar scroll effect
         window.addEventListener('scroll', function() {
             const navbar = document.getElementById('navbar');
