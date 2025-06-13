@@ -21,14 +21,19 @@
             --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             --shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
             --shadow-hover: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            --hero-bg-start: #f8fafc;
+            --hero-bg-end: #e2e8f0;
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
             color: var(--text-primary);
             overflow-x: hidden;
             min-height: 100vh;
+            /* Safari-specific fixes */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         .container {
@@ -43,6 +48,7 @@
             top: 0;
             width: 100%;
             background: rgba(255, 255, 255, 0.95);
+            -webkit-backdrop-filter: blur(10px);
             backdrop-filter: blur(10px);
             z-index: 1000;
             transition: all 0.3s ease;
@@ -103,15 +109,23 @@
             width: 100%;
         }
 
-        /* Hero Section - FIXED with fallback background */
+        /* Hero Section - Safari-optimized */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
-            background: #f8fafc;
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            /* Multiple fallbacks for Safari */
+            background-color: var(--hero-bg-start);
+            background: var(--hero-bg-start);
+            background: -webkit-linear-gradient(135deg, var(--hero-bg-start) 0%, var(--hero-bg-end) 100%);
+            background: -moz-linear-gradient(135deg, var(--hero-bg-start) 0%, var(--hero-bg-end) 100%);
+            background: -o-linear-gradient(135deg, var(--hero-bg-start) 0%, var(--hero-bg-end) 100%);
+            background: linear-gradient(135deg, var(--hero-bg-start) 0%, var(--hero-bg-end) 100%);
             position: relative;
             overflow: hidden;
+            /* Safari-specific properties */
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
         }
 
         .hero::before {
@@ -121,9 +135,12 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%23e2e8f0" opacity="0.3"/><circle cx="75" cy="75" r="1" fill="%23cbd5e1" opacity="0.3"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%23e2e8f0" opacity="0.3"/><circle cx="75" cy="75" r="1" fill="%23cbd5e1" opacity="0.3"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
             opacity: 0.5;
             pointer-events: none;
+            /* Safari optimization */
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
         }
 
         .hero-content {
@@ -141,11 +158,23 @@
             font-weight: 800;
             line-height: 1.1;
             margin-bottom: 1.5rem;
+            /* Safari-optimized gradient text */
             background: var(--gradient);
+            background: -webkit-linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            color: var(--primary-color);
+            /* Fallback for older Safari versions */
+            color: transparent;
+        }
+
+        /* Safari fallback for gradient text */
+        @supports not (-webkit-background-clip: text) {
+            .hero-text h1 {
+                color: var(--primary-color);
+                -webkit-text-fill-color: var(--primary-color);
+            }
         }
 
         .hero-text p {
@@ -165,10 +194,14 @@
             font-weight: 600;
             transition: all 0.3s ease;
             box-shadow: var(--shadow);
+            /* Safari optimization */
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
         }
 
         .cta-button:hover {
-            transform: translateY(-2px);
+            -webkit-transform: translateY(-2px) translateZ(0);
+            transform: translateY(-2px) translateZ(0);
             box-shadow: var(--shadow-hover);
             background: #1d4ed8;
         }
@@ -182,12 +215,14 @@
             border-radius: 2rem;
             padding: 2rem;
             box-shadow: var(--shadow);
-            transform: rotate(2deg);
+            -webkit-transform: rotate(2deg) translateZ(0);
+            transform: rotate(2deg) translateZ(0);
             transition: transform 0.3s ease;
         }
 
         .profile-card:hover {
-            transform: rotate(0deg) scale(1.02);
+            -webkit-transform: rotate(0deg) scale(1.02) translateZ(0);
+            transform: rotate(0deg) scale(1.02) translateZ(0);
         }
 
         .profile-img {
@@ -195,6 +230,8 @@
             height: 300px;
             border-radius: 50%;
             background: var(--gradient);
+            background: -webkit-linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             margin: 0 auto 1rem;
             display: flex;
             align-items: center;
@@ -203,9 +240,12 @@
             color: var(--white);
             overflow: hidden;
             position: relative;
+            /* Safari optimization */
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
         }
 
-        /* Profile image styles - IMPROVED */
+        /* Profile image styles - Safari-optimized */
         .profile-img img {
             width: 100%;
             height: 100%;
@@ -214,11 +254,17 @@
             position: absolute;
             top: 0;
             left: 0;
+            /* Safari image rendering */
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+            image-rendering: -webkit-optimize-contrast;
         }
 
         /* Fallback when no image is provided */
         .profile-img.no-image {
             background: var(--gradient);
+            background: -webkit-linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
 
         /* About Section */
@@ -254,10 +300,14 @@
             border-radius: 1rem;
             text-align: center;
             transition: transform 0.3s ease;
+            /* Safari optimization */
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
         }
 
         .skill-card:hover {
-            transform: translateY(-5px);
+            -webkit-transform: translateY(-5px) translateZ(0);
+            transform: translateY(-5px) translateZ(0);
         }
 
         .skill-icon {
@@ -284,16 +334,22 @@
             overflow: hidden;
             box-shadow: var(--shadow);
             transition: all 0.3s ease;
+            /* Safari optimization */
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
         }
 
         .portfolio-card:hover {
-            transform: translateY(-10px);
+            -webkit-transform: translateY(-10px) translateZ(0);
+            transform: translateY(-10px) translateZ(0);
             box-shadow: var(--shadow-hover);
         }
 
         .card-image {
             height: 250px;
             background: var(--gradient);
+            background: -webkit-linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -384,6 +440,9 @@
             border-radius: 0.5rem;
             font-family: inherit;
             transition: border-color 0.3s ease;
+            /* Safari form styling */
+            -webkit-appearance: none;
+            appearance: none;
         }
 
         .form-group input:focus,
@@ -401,6 +460,9 @@
             font-weight: 600;
             cursor: pointer;
             transition: background 0.3s ease;
+            /* Safari button styling */
+            -webkit-appearance: none;
+            appearance: none;
         }
 
         .submit-btn:hover {
@@ -432,7 +494,7 @@
             color: var(--accent-color);
         }
 
-        /* Responsive Design */
+        /* Responsive Design - Safari-optimized */
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -470,15 +532,32 @@
             }
         }
 
-        /* Animations */
+        /* Safari-specific mobile optimizations */
+        @supports (-webkit-touch-callout: none) {
+            .hero {
+                /* Fix for Safari mobile viewport issues */
+                min-height: -webkit-fill-available;
+                min-height: 100vh;
+            }
+            
+            .cta-button:active,
+            .submit-btn:active {
+                /* Fix for Safari mobile tap highlighting */
+                -webkit-tap-highlight-color: transparent;
+            }
+        }
+
+        /* Animations - Safari-optimized */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                -webkit-transform: translateY(30px) translateZ(0);
+                transform: translateY(30px) translateZ(0);
             }
             to {
                 opacity: 1;
-                transform: translateY(0);
+                -webkit-transform: translateY(0) translateZ(0);
+                transform: translateY(0) translateZ(0);
             }
         }
 
@@ -486,9 +565,21 @@
             animation: fadeInUp 0.6s ease forwards;
         }
 
-        /* Smooth scrolling */
+        /* Smooth scrolling - Safari-compatible */
         html {
             scroll-behavior: smooth;
+            /* Safari-specific smooth scrolling */
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* Safari-specific fixes */
+        @media screen and (-webkit-min-device-pixel-ratio: 0) {
+            .hero-text h1 {
+                /* Additional Safari gradient text fallback */
+                background: -webkit-linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
         }
     </style>
 </head>
@@ -498,7 +589,7 @@
         <div class="nav-container">
             <a href="#" class="logo">Jessamine Li</a>
             <ul class="nav-links">
-                <li><a href="#">Home</a></li>
+                <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#portfolio">Work</a></li>
                 <li><a href="cv/">CV</a></li>
@@ -661,294 +752,302 @@
     </footer>
 
     <script>
-    // Enhanced scrolling script for better UX
-(function() {
-    'use strict';
+    // Safari-optimized JavaScript
+    (function() {
+        'use strict';
 
-    // Configuration
-    const CONFIG = {
-        navbarHeight: 80,
-        scrollDuration: 800, // Reduced from 1200ms for snappier feel
-        scrollOffset: 20, // Additional offset for better visual spacing
-        throttleDelay: 16, // ~60fps for smooth performance
-        intersectionThreshold: 0.15,
-        intersectionRootMargin: '0px 0px -100px 0px'
-    };
-
-    // Utility functions
-    const throttle = (func, delay) => {
-        let timeoutId;
-        let lastExecTime = 0;
-        return function (...args) {
-            const currentTime = Date.now();
-            if (currentTime - lastExecTime > delay) {
-                func.apply(this, args);
-                lastExecTime = currentTime;
-            } else {
-                clearTimeout(timeoutId);
-                timeoutId = setTimeout(() => {
-                    func.apply(this, args);
-                    lastExecTime = Date.now();
-                }, delay - (currentTime - lastExecTime));
-            }
+        // Configuration
+        const CONFIG = {
+            navbarHeight: 80,
+            scrollDuration: 800,
+            scrollOffset: 20,
+            throttleDelay: 16,
+            intersectionThreshold: 0.15,
+            intersectionRootMargin: '0px 0px -100px 0px'
         };
-    };
 
-    // Improved easing function (easeInOutCubic)
-    const easeInOutCubic = (t, b, c, d) => {
-        t /= d / 2;
-        if (t < 1) return c / 2 * t * t * t + b;
-        t -= 2;
-        return c / 2 * (t * t * t + 2) + b;
-    };
+        // Check if Safari
+        const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+        
+        // Utility functions
+        const throttle = (func, delay) => {
+            let timeoutId;
+            let lastExecTime = 0;
+            return function (...args) {
+                const currentTime = Date.now();
+                if (currentTime - lastExecTime > delay) {
+                    func.apply(this, args);
+                    lastExecTime = currentTime;
+                } else {
+                    clearTimeout(timeoutId);
+                    timeoutId = setTimeout(() => {
+                        func.apply(this, args);
+                        lastExecTime = Date.now();
+                    }, delay - (currentTime - lastExecTime));
+                }
+            };
+        };
 
-    // Check if user prefers reduced motion
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        // Safari-compatible easing function
+        const easeInOutCubic = (t, b, c, d) => {
+            t /= d / 2;
+            if (t < 1) return c / 2 * t * t * t + b;
+            t -= 2;
+            return c / 2 * (t * t * t + 2) + b;
+        };
 
-    // Enhanced smooth scroll function
-    function smoothScrollTo(targetY, duration = CONFIG.scrollDuration) {
-        // Respect user's motion preferences
-        if (prefersReducedMotion) {
-            window.scrollTo(0, targetY);
-            return Promise.resolve();
+        // Check if user prefers reduced motion
+        const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        // Safari-optimized smooth scroll
+        function smoothScrollTo(targetY, duration = CONFIG.scrollDuration) {
+            if (prefersReducedMotion || isSafari) {
+                // Use native smooth scroll for Safari when possible
+                window.scrollTo({
+                    top: targetY,
+                    behavior: 'smooth'
+                });
+                return Promise.resolve();
+            }
+
+            return new Promise((resolve) => {
+                const startY = window.pageYOffset;
+                const distance = targetY - startY;
+                let startTime = null;
+
+                if (Math.abs(distance) < 5) {
+                    window.scrollTo(0, targetY);
+                    resolve();
+                    return;
+                }
+
+                function animation(currentTime) {
+                    if (startTime === null) startTime = currentTime;
+                    const timeElapsed = currentTime - startTime;
+                    const progress = Math.min(timeElapsed / duration, 1);
+                    
+                    const currentY = easeInOutCubic(timeElapsed, startY, distance, duration);
+                    window.scrollTo(0, currentY);
+
+                    if (progress < 1) {
+                        requestAnimationFrame(animation);
+                    } else {
+                        window.scrollTo(0, targetY);
+                        resolve();
+                    }
+                }
+
+                requestAnimationFrame(animation);
+            });
         }
 
-        return new Promise((resolve) => {
-            const startY = window.pageYOffset;
-            const distance = targetY - startY;
-            let startTime = null;
+        // Handle initial hash with Safari considerations
+        function handleInitialHash() {
+            if (window.location.hash) {
+                setTimeout(() => {
+                    const target = document.querySelector(window.location.hash);
+                    if (target) {
+                        const targetY = target.offsetTop - CONFIG.navbarHeight - CONFIG.scrollOffset;
+                        smoothScrollTo(Math.max(0, targetY), 600);
+                    }
+                }, isSafari ? 300 : 150); // Longer delay for Safari
+            }
+        }
 
-            // If the distance is very small, just jump there
-            if (Math.abs(distance) < 5) {
-                window.scrollTo(0, targetY);
-                resolve();
+        // Safari-optimized navbar scroll
+        const handleNavbarScroll = throttle(() => {
+            const navbar = document.getElementById('navbar');
+            if (!navbar) return;
+
+            const shouldShowScrolled = window.scrollY > 50;
+            const hasScrolledClass = navbar.classList.contains('scrolled');
+
+            if (shouldShowScrolled && !hasScrolledClass) {
+                navbar.classList.add('scrolled');
+            } else if (!shouldShowScrolled && hasScrolledClass) {
+                navbar.classList.remove('scrolled');
+            }
+        }, CONFIG.throttleDelay);
+
+        // Enhanced navigation link handling
+        function setupNavigationLinks() {
+            const navLinks = document.querySelectorAll('a[href^="#"]');
+            
+            navLinks.forEach(anchor => {
+                anchor.addEventListener('click', async function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const target = document.querySelector(targetId);
+                    
+                    if (!target) return;
+
+                    const targetY = Math.max(0, target.offsetTop - CONFIG.navbarHeight - CONFIG.scrollOffset);
+                    
+                    navLinks.forEach(link => link.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    await smoothScrollTo(targetY);
+                    
+                    if (history.pushState) {
+                        history.pushState(null, null, targetId);
+                    }
+                });
+            });
+        }
+
+        // Safari-compatible intersection observer
+        function setupScrollAnimations() {
+            // Feature detection for intersection observer
+            if (!('IntersectionObserver' in window)) {
+                // Fallback for older Safari versions
+                document.querySelectorAll('.portfolio-card, .skill-card').forEach(el => {
+                    el.classList.add('fade-in-up');
+                });
                 return;
             }
 
-            function animation(currentTime) {
-                if (startTime === null) startTime = currentTime;
-                const timeElapsed = currentTime - startTime;
-                const progress = Math.min(timeElapsed / duration, 1);
-                
-                const currentY = easeInOutCubic(timeElapsed, startY, distance, duration);
-                window.scrollTo(0, currentY);
+            const observerOptions = {
+                threshold: CONFIG.intersectionThreshold,
+                rootMargin: CONFIG.intersectionRootMargin
+            };
 
-                if (progress < 1) {
-                    requestAnimationFrame(animation);
-                } else {
-                    // Ensure we end up exactly at the target
-                    window.scrollTo(0, targetY);
-                    resolve();
-                }
-            }
+            const animationObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in-up');
+                        animationObserver.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
 
-            requestAnimationFrame(animation);
-        });
-    }
+            const navStateObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const currentId = entry.target.id;
+                        const navLinks = document.querySelectorAll('.nav-links a');
+                        
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === `#${currentId}`) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }, {
+                threshold: 0.3,
+                rootMargin: '-80px 0px -60% 0px'
+            });
 
-    // Handle incoming hash fragments with improved UX
-    function handleInitialHash() {
-        if (window.location.hash) {
-            // Delay to ensure page is fully loaded and styled
-            setTimeout(() => {
-                const target = document.querySelector(window.location.hash);
-                if (target) {
-                    const targetY = target.offsetTop - CONFIG.navbarHeight - CONFIG.scrollOffset;
-                    smoothScrollTo(Math.max(0, targetY), 600); // Slightly faster for initial load
-                }
-            }, 150); // Slightly longer delay for better reliability
+            document.querySelectorAll('.portfolio-card, .skill-card').forEach(el => {
+                animationObserver.observe(el);
+            });
+
+            document.querySelectorAll('section[id]').forEach(section => {
+                navStateObserver.observe(section);
+            });
         }
-    }
 
-    // Enhanced navbar scroll effect with better performance
-    const handleNavbarScroll = throttle(() => {
-        const navbar = document.getElementById('navbar');
-        if (!navbar) return;
+        // Enhanced form handling
+        function setupFormHandling() {
+            const form = document.querySelector('.contact-form');
+            if (!form) return;
 
-        const shouldShowScrolled = window.scrollY > 50;
-        const hasScrolledClass = navbar.classList.contains('scrolled');
-
-        if (shouldShowScrolled && !hasScrolledClass) {
-            navbar.classList.add('scrolled');
-        } else if (!shouldShowScrolled && hasScrolledClass) {
-            navbar.classList.remove('scrolled');
-        }
-    }, CONFIG.throttleDelay);
-
-    // Enhanced navigation link handling
-    function setupNavigationLinks() {
-        const navLinks = document.querySelectorAll('a[href^="#"]');
-        
-        navLinks.forEach(anchor => {
-            anchor.addEventListener('click', async function(e) {
+            form.addEventListener('submit', function(e) {
                 e.preventDefault();
                 
-                const targetId = this.getAttribute('href');
-                const target = document.querySelector(targetId);
+                const submitBtn = form.querySelector('.submit-btn');
+                const originalText = submitBtn.textContent;
                 
-                if (!target) return;
-
-                // Calculate target position with improved offset
-                const targetY = Math.max(0, target.offsetTop - CONFIG.navbarHeight - CONFIG.scrollOffset);
+                submitBtn.textContent = 'Sending...';
+                submitBtn.disabled = true;
                 
-                // Add active state to clicked link (optional UX enhancement)
-                navLinks.forEach(link => link.classList.remove('active'));
-                this.classList.add('active');
-                
-                // Perform smooth scroll
-                await smoothScrollTo(targetY);
-                
-                // Update URL without triggering scroll
-                if (history.pushState) {
-                    history.pushState(null, null, targetId);
-                }
-            });
-        });
-    }
-
-    // Enhanced intersection observer for animations and active nav states
-    function setupScrollAnimations() {
-        const observerOptions = {
-            threshold: CONFIG.intersectionThreshold,
-            rootMargin: CONFIG.intersectionRootMargin
-        };
-
-        // Animation observer
-        const animationObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in-up');
-                    // Unobserve once animated to improve performance
-                    animationObserver.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        // Active nav state observer
-        const navStateObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    // Update active nav link based on current section
-                    const currentId = entry.target.id;
-                    const navLinks = document.querySelectorAll('.nav-links a');
-                    
-                    navLinks.forEach(link => {
-                        link.classList.remove('active');
-                        if (link.getAttribute('href') === `#${currentId}`) {
-                            link.classList.add('active');
-                        }
-                    });
-                }
-            });
-        }, {
-            threshold: 0.3,
-            rootMargin: '-80px 0px -60% 0px'
-        });
-
-        // Observe elements
-        document.querySelectorAll('.portfolio-card, .skill-card').forEach(el => {
-            animationObserver.observe(el);
-        });
-
-        document.querySelectorAll('section[id]').forEach(section => {
-            navStateObserver.observe(section);
-        });
-    }
-
-    // Enhanced form handling with better UX feedback
-    function setupFormHandling() {
-        const form = document.querySelector('.contact-form');
-        if (!form) return;
-
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const submitBtn = form.querySelector('.submit-btn');
-            const originalText = submitBtn.textContent;
-            
-            // Provide immediate feedback
-            submitBtn.textContent = 'Sending...';
-            submitBtn.disabled = true;
-            
-            // Simulate form processing (replace with actual form handling)
-            setTimeout(() => {
-                submitBtn.textContent = 'Message Sent!';
-                submitBtn.style.backgroundColor = '#059669'; // Green color
-                
-                // Reset form and button after delay
                 setTimeout(() => {
-                    this.reset();
-                    submitBtn.textContent = originalText;
-                    submitBtn.disabled = false;
-                    submitBtn.style.backgroundColor = '';
-                }, 2000);
-            }, 1000);
-        });
-    }
-
-    // Handle browser back/forward navigation
-    function setupHistoryNavigation() {
-        window.addEventListener('popstate', () => {
-            if (window.location.hash) {
-                const target = document.querySelector(window.location.hash);
-                if (target) {
-                    const targetY = target.offsetTop - CONFIG.navbarHeight - CONFIG.scrollOffset;
-                    smoothScrollTo(Math.max(0, targetY), 400);
-                }
-            }
-        });
-    }
-
-    // Add keyboard navigation support for accessibility
-    function setupKeyboardNavigation() {
-        document.addEventListener('keydown', (e) => {
-            // Allow users to navigate sections with arrow keys (when focused on nav)
-            if (document.activeElement.closest('.nav-links')) {
-                const navLinks = Array.from(document.querySelectorAll('.nav-links a'));
-                const currentIndex = navLinks.indexOf(document.activeElement);
-                
-                if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
-                    e.preventDefault();
-                    const nextIndex = (currentIndex + 1) % navLinks.length;
-                    navLinks[nextIndex].focus();
-                } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
-                    e.preventDefault();
-                    const prevIndex = currentIndex > 0 ? currentIndex - 1 : navLinks.length - 1;
-                    navLinks[prevIndex].focus();
-                }
-            }
-        });
-    }
-
-    // Initialize everything when DOM is ready
-    function init() {
-        handleInitialHash();
-        setupNavigationLinks();
-        setupScrollAnimations();
-        setupFormHandling();
-        setupHistoryNavigation();
-        setupKeyboardNavigation();
-        
-        // Attach scroll listener
-        window.addEventListener('scroll', handleNavbarScroll, { passive: true });
-    }
-
-    // Wait for DOM to be ready
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', init);
-    } else {
-        init();
-    }
-
-    // Handle reduced motion preference changes
-    window.matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change', (e) => {
-        if (e.matches) {
-            // User now prefers reduced motion
-            console.log('Reduced motion preference detected');
+                    submitBtn.textContent = 'Message Sent!';
+                    submitBtn.style.backgroundColor = '#059669';
+                    
+                    setTimeout(() => {
+                        this.reset();
+                        submitBtn.textContent = originalText;
+                        submitBtn.disabled = false;
+                        submitBtn.style.backgroundColor = '';
+                    }, 2000);
+                }, 1000);
+            });
         }
-    });
 
-})();
+        // Handle browser navigation
+        function setupHistoryNavigation() {
+            window.addEventListener('popstate', () => {
+                if (window.location.hash) {
+                    const target = document.querySelector(window.location.hash);
+                    if (target) {
+                        const targetY = target.offsetTop - CONFIG.navbarHeight - CONFIG.scrollOffset;
+                        smoothScrollTo(Math.max(0, targetY), 400);
+                    }
+                }
+            });
+        }
+
+        // Safari-specific fixes
+        function applySafariFixes() {
+            if (isSafari) {
+                // Fix Safari viewport height issues
+                const setVH = () => {
+                    const vh = window.innerHeight * 0.01;
+                    document.documentElement.style.setProperty('--vh', `${vh}px`);
+                };
+                
+                setVH();
+                window.addEventListener('resize', setVH);
+                window.addEventListener('orientationchange', setVH);
+
+                // Force background repaint on Safari
+                const hero = document.querySelector('.hero');
+                if (hero) {
+                    setTimeout(() => {
+                        hero.style.transform = 'translateZ(0)';
+                        hero.style.webkitTransform = 'translateZ(0)';
+                    }, 100);
+                }
+            }
+        }
+
+        // Initialize everything
+        function init() {
+            handleInitialHash();
+            setupNavigationLinks();
+            setupScrollAnimations();
+            setupFormHandling();
+            setupHistoryNavigation();
+            applySafariFixes();
+            
+            window.addEventListener('scroll', handleNavbarScroll, { passive: true });
+            
+            // Safari-specific initialization
+            if (isSafari) {
+                console.log('Safari detected - applying optimizations');
+            }
+        }
+
+        // Wait for DOM
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
+
+        // Handle reduced motion changes
+        if (window.matchMedia) {
+            window.matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change', (e) => {
+                if (e.matches) {
+                    console.log('Reduced motion preference detected');
+                }
+            });
+        }
+
+    })();
     </script>
 </body>
 </html>
