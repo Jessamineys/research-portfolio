@@ -759,7 +759,7 @@
         // Configuration
         const CONFIG = {
             navbarHeight: 80,
-            scrollDuration: 800,
+            scrollDuration: 1200,
             scrollOffset: 20,
             throttleDelay: 16,
             intersectionThreshold: 0.15,
@@ -789,11 +789,11 @@
         };
 
         // Safari-compatible easing function
-        const easeInOutCubic = (t, b, c, d) => {
+        const easeInOutQuad = (t, b, c, d) => {
             t /= d / 2;
-            if (t < 1) return c / 2 * t * t * t + b;
-            t -= 2;
-            return c / 2 * (t * t * t + 2) + b;
+            if (t < 1) return c / 2 * t * t + b;
+            t--;
+            return -c / 2 * (t * (t - 2) - 1) + b;
         };
 
         // Check if user prefers reduced motion
@@ -826,7 +826,7 @@
                     const timeElapsed = currentTime - startTime;
                     const progress = Math.min(timeElapsed / duration, 1);
                     
-                    const currentY = easeInOutCubic(timeElapsed, startY, distance, duration);
+                    const currentY = easeInOutQuad(timeElapsed, startY, distance, duration);
                     window.scrollTo(0, currentY);
 
                     if (progress < 1) {
