@@ -294,7 +294,8 @@
             display: grid;
             grid-template-columns: 1fr 2fr;
             gap: 4rem;
-            align-items: center;
+            align-items: flex-start;  /* CHANGED from center to flex-start */
+            margin-bottom: 4rem;      /* ADD this line */
         }
 
         .skills-grid {
@@ -590,6 +591,482 @@
                 -webkit-text-fill-color: transparent;
             }
         }
+        /* Base styles with Safari optimizations */
+    .content-section {
+        margin-bottom: 4rem;
+        /* Safari rendering optimization */
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+    }
+
+    .subsection-title {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 3rem;
+        text-align: center;
+        /* Safari text rendering */
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        /* Force hardware acceleration */
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+    }
+
+    /* Education Timeline - Safari Grid Fallbacks */
+    .education-timeline {
+        margin: 0 auto;
+        /* Modern browsers */
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        /* Safari optimization */
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+    }
+
+    /* Safari fallback for older versions that don't support gap */
+    @supports not (gap: 2rem) {
+        .education-timeline {
+            display: block;
+        }
+        
+        .education-item:not(:last-child) {
+            margin-bottom: 2rem;
+        }
+    }
+
+    /* Education Items - Comprehensive Safari Support */
+    .education-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 2rem;
+        background: var(--white);
+        border-radius: 1.5rem;
+        padding: 2rem;
+        box-shadow: var(--shadow);
+        /* Safari-optimized transitions */
+        -webkit-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        -moz-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        -o-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        /* Force hardware acceleration */
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        /* Safari rendering hints */
+        -webkit-perspective: 1000px;
+        perspective: 1000px;
+        /* Prevent text selection issues in Safari */
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    /* Safari flexbox fallback */
+    @supports not (gap: 2rem) {
+        .education-item {
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: start;
+            -moz-box-align: start;
+            -ms-flex-align: start;
+            align-items: flex-start;
+        }
+        
+        .education-icon {
+            background: var(--white);
+            border-radius: 1rem;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            padding: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border: 2px solid var(--secondary-color);
+            /* Safari optimizations */
+            -webkit-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+
+        .education-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            /* Safari image rendering */
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+            image-rendering: -webkit-optimize-contrast;
+        }
+
+        /* Special handling for Berkeley seal (circular) */
+        .education-icon.berkeley img {
+            border-radius: 50%;
+        }
+
+        /* Special handling for UW HCDE logo (rectangular) */
+        .education-icon.uw-hcde img {
+            border-radius: 0.25rem;
+        }
+
+    /* Enhanced hover states for Safari */
+    .education-item:hover {
+        /* Multiple transform prefixes for maximum Safari compatibility */
+        -webkit-transform: translateY(-5px) translateZ(0) scale3d(1.01, 1.01, 1);
+        -moz-transform: translateY(-5px) translateZ(0) scale3d(1.01, 1.01, 1);
+        -ms-transform: translateY(-5px) translateZ(0) scale3d(1.01, 1.01, 1);
+        transform: translateY(-5px) translateZ(0) scale3d(1.01, 1.01, 1);
+        box-shadow: var(--shadow-hover);
+        /* Safari-specific properties */
+        -webkit-filter: brightness(1.02);
+        filter: brightness(1.02);
+    }
+
+    /* Education Icon - Safari Optimized */
+    .education-icon {
+    /* FIXED: Consistent sizing for all icons */
+    width: 80px;
+    height: 80px;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    overflow: hidden; /* ADD: Prevents image overflow */
+    
+    /* Background styling */
+    background: var(--secondary-color);
+    background-color: var(--secondary-color);
+    background: -webkit-linear-gradient(135deg, var(--secondary-color) 0%, #e2e8f0 100%);
+    background: -moz-linear-gradient(135deg, var(--secondary-color) 0%, #e2e8f0 100%);
+    background: -o-linear-gradient(135deg, var(--secondary-color) 0%, #e2e8f0 100%);
+    background: linear-gradient(135deg, var(--secondary-color) 0%, #e2e8f0 100%);
+    
+    /* Border and shadow */
+    border: 2px solid var(--white);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    
+    /* Safari flexbox fallbacks */
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    
+    /* Safari optimizations */
+    -webkit-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    -moz-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    -o-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+    /* Safari-specific hover effects for icons */
+    .education-item:hover .education-icon {
+        -webkit-transform: scale3d(1.05, 1.05, 1) translateZ(0);
+        transform: scale3d(1.05, 1.05, 1) translateZ(0);
+        box-shadow: 0 8px 15px -3px rgba(0, 0, 0, 0.2);
+        border-color: var(--primary-color);
+    }
+
+    /* Education Content - Safari Text Rendering */
+    .education-content {
+        flex: 1;
+        /* Safari text optimization */
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+        /* Re-enable text selection for content */
+        -webkit-user-select: text;
+        -moz-user-select: text;
+        -ms-user-select: text;
+        user-select: text;
+    }
+
+    /* Education Header - Safari Flexbox */
+    .education-header {
+        display: flex;
+        /* Safari flexbox fallbacks */
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+        -moz-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        -webkit-box-align: start;
+        -moz-box-align: start;
+        -ms-flex-align: start;
+        align-items: flex-start;
+        margin-bottom: 0.75rem;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    /* Safari gap fallback */
+    @supports not (gap: 1rem) {
+        .education-header {
+            margin-bottom: 1.75rem;
+        }
+        
+        .education-year {
+            margin-top: 1rem;
+        }
+    }
+
+    /* Degree Title - Safari Typography */
+    .degree-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin: 0;
+        line-height: 1.2;
+        /* Safari text rendering */
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+        /* Prevent orphans in Safari */
+        orphans: 2;
+        widows: 2;
+    }
+
+    /* Education Year Badge - Safari Gradients */
+    .education-year {
+        background: var(--primary-color);
+        /* Multiple background fallbacks */
+        background-color: var(--primary-color);
+        background: -webkit-linear-gradient(135deg, var(--primary-color) 0%, #1d4ed8 100%);
+        background: -moz-linear-gradient(135deg, var(--primary-color) 0%, #1d4ed8 100%);
+        background: -o-linear-gradient(135deg, var(--primary-color) 0%, #1d4ed8 100%);
+        background: linear-gradient(135deg, var(--primary-color) 0%, #1d4ed8 100%);
+        color: var(--white);
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+        font-size: 0.875rem;
+        font-weight: 600;
+        flex-shrink: 0;
+        box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2);
+        /* Safari optimizations */
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        /* Safari text rendering */
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Institution Name - Safari Typography */
+    .institution {
+        font-size: 1.125rem;
+        color: var(--accent-color);
+        font-weight: 600;
+        margin-bottom: 1rem;
+        /* Safari text rendering */
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+    }
+
+    /* Education Description - Safari Typography */
+    .education-description {
+        color: var(--text-secondary);
+        line-height: 1.6;
+        margin: 0;
+        font-size: 1rem;
+        /* Safari text rendering */
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+        /* Better text flow in Safari */
+        orphans: 2;
+        widows: 2;
+        word-wrap: break-word;
+        -webkit-hyphens: auto;
+        -moz-hyphens: auto;
+        -ms-hyphens: auto;
+        hyphens: auto;
+    }
+
+    /* Responsive Design - Safari Mobile Optimizations */
+    @media (max-width: 768px) {
+        .education-item {
+            flex-direction: column;
+            text-align: center;
+            gap: 1.5rem;
+            /* Safari mobile optimizations */
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+        
+        /* Safari mobile flexbox fallback */
+        @supports not (gap: 1.5rem) {
+            .education-item {
+                display: block;
+                text-align: center;
+            }
+            
+            .education-icon {
+                margin: 0 auto 1.5rem auto;
+            }
+        }
+        
+        .education-icon {
+            margin: 0 auto;
+            /* Mobile Safari touch optimization */
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+        
+        .education-header {
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+            /* Safari mobile flexbox */
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -moz-box-orient: vertical;
+            -moz-box-direction: normal;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            -webkit-box-align: center;
+            -moz-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+        }
+        
+        .degree-title {
+            font-size: 1.25rem;
+            text-align: center;
+        }
+        
+        .subsection-title {
+            font-size: 1.75rem;
+        }
+        
+        /* Re-enable text selection on mobile for content */
+        .education-content {
+            -webkit-user-select: text;
+            -moz-user-select: text;
+            -ms-user-select: text;
+            user-select: text;
+        }
+    }
+
+    /* Safari-specific mobile optimizations */
+    @media (max-width: 480px) {
+        .education-item {
+            padding: 1.5rem;
+            /* Safari mobile performance */
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+            will-change: transform;
+        }
+        
+        .education-icon {
+            width: 70px;
+            height: 70px;
+            font-size: 2rem;
+        }
+        
+        .degree-title {
+            font-size: 1.125rem;
+        }
+    }
+
+    /* Safari-specific fixes for older versions */
+    @supports (-webkit-appearance: none) {
+        .education-item {
+            /* Force hardware acceleration in older Safari */
+            -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+        }
+        
+        .education-item:hover {
+            -webkit-transform: translate3d(0, -5px, 0) scale3d(1.01, 1.01, 1);
+            transform: translate3d(0, -5px, 0) scale3d(1.01, 1.01, 1);
+        }
+    }
+
+    /* Safari iOS specific optimizations */
+    @supports (-webkit-touch-callout: none) {
+        .education-timeline {
+            /* Fix for Safari iOS scrolling */
+            -webkit-overflow-scrolling: touch;
+            /* Better rendering on iOS */
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+        }
+        
+        .education-item {
+            /* iOS Safari tap optimization */
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            -webkit-user-select: none;
+            user-select: none;
+        }
+        
+        .education-item:hover {
+            /* iOS Safari doesn't need hover states */
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+            box-shadow: var(--shadow);
+        }
+    }
+
+    /* Reduced motion support for Safari */
+    @media (prefers-reduced-motion: reduce) {
+        .education-item,
+        .education-icon {
+            -webkit-transition: none;
+            -moz-transition: none;
+            -o-transition: none;
+            transition: none;
+        }
+        
+        .education-item:hover {
+            -webkit-transform: none;
+            -moz-transform: none;
+            -ms-transform: none;
+            transform: none;
+        }
+    }
+
+    /* High contrast mode support for Safari */
+    @media (prefers-contrast: high) {
+        .education-item {
+            border: 2px solid var(--text-primary);
+        }
+        
+        .education-year {
+            border: 2px solid var(--white);
+        }
+    }
     </style>
 </head>
 <body>
@@ -666,8 +1143,67 @@
                     </p>
                 </div>
             </div>
+
+            <!-- Education Section - Safari Optimized -->
+            <div class="content-section">
+                <h3 class="subsection-title">Education</h3>
+                <div class="education-timeline">
+                    <div class="education-item">
+                        <div class="education-icon uw-hcde">
+                            <img src="assets/images/uw-logo.png" alt="UW HCDE Logo">
+                        </div>
+                        <div class="education-content">
+                            <div class="education-header">
+                                <h4 class="degree-title">Ph.D. in Human-Centered Design & Engineering (HCDE)</h4>
+                                <span class="education-year">2025--Now</span>
+                            </div>
+                            <p class="institution">University of Washington</p>
+                            <p class="education-description">
+                                Dissertation focused on [research area]. Specialized in [specific methods/theories].
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="education-item">
+                        <div class="education-icon uw-hcde">
+                            <img src="assets/images/uw-logo.png" alt="UW HCDE Logo">
+                        </div>
+                        <div class="education-content">
+                            <div class="education-header">
+                                <h4 class="degree-title">M.S. in Human-Centered Design & Engineering (HCDE)</h4>
+                                <span class="education-year">2023--2025</span>
+                            </div>
+                            <p class="institution">University of Washington</p>
+                            <p class="education-description">
+                                Concentration in [specific area]. Thesis on [research topic].
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="education-item">
+                        <div class="education-icon berkeley">
+                            <img src="assets/images/berkeley-logo.png" alt="UC Berkeley Logo">
+                        </div>
+                        <div class="education-content">
+                            <div class="education-header">
+                                <h4 class="degree-title">B.A. in Cognitive Science</h4>
+                                <h4 class="degree-title">B.A. in Psychology (Minor in Data Science)</h4>
+                                <span class="education-year">2018--2022</span>
+                            </div>
+                            <p class="institution">University of California, Berkeley</p>
+                            <p class="education-description">
+                                [Honors/distinctions if applicable]. Focus on [relevant coursework].
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
+
+
+
+
 
     <!-- Portfolio Section -->
     <section id="portfolio" class="portfolio">
