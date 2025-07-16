@@ -571,6 +571,7 @@ nav.scrolled {
 
 .card-image {
     height: 250px;
+    width: 100%; /* or a fixed value like 300px if needed */
     background: var(--gradient);
     background: -webkit-linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -579,7 +580,16 @@ nav.scrolled {
     justify-content: center;
     font-size: 3rem;
     color: var(--white);
+    overflow: hidden; /* prevents image overflow */
 }
+
+.card-image img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover; /* ensures the image fills the space proportionally */
+    display: block;
+}
+
 
 .card-content {
     padding: 2rem;
