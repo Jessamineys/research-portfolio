@@ -8,12 +8,35 @@ class MarketDashboard {
             fearGreed: null
         };
         this.charts = {};
-        this.apiKeys = {
-            // Replace with your actual API keys
-            alphaVantage: 'YOUR_ALPHA_VANTAGE_API_KEY',
-            fearGreed: 'YOUR_FEAR_GREED_API_KEY' // If needed
-        };
+        // API configuration - uses GitHub Actions generated config
+        this.setupApiConfiguration();
         this.init();
+    }
+
+    setupApiConfiguration() {
+        // Check if GitHub Actions generated configuration is available
+        if (window.API_CONFIG && window.API_CONFIG.isConfigured()) {
+            this.apiKeys = {
+                alphaVantage: window.API_CONFIG.alphaVantage,
+                fearGreed: 'demo' // Add other keys as needed
+            };
+            this.demoMode = false;
+            this.rateLimits = window.API_CONFIG.rateLimits;
+            
+            console.log('✅ Using production API configuration');
+            console.log('📊 Rate limits:', this.rateLimits);
+        } else {
+            // Fallback to demo mode
+            this.apiKeys = {
+                alphaVantage: 'demo',
+                fearGreed: 'demo'
+            };
+            this.demoMode = true;
+            this.rateLimits = { callsPerMinute: 0, callsPerDay: 0 };
+            
+            console.log('⚠️ Running in demo mode - API keys not configured');
+            this.showDemoModeNotification();
+        }
     }
 
     async init() {
@@ -68,7 +91,6 @@ class MarketDashboard {
             ]);
             
             this.updateMetricCards();
-            this.generateAnalysis();
         } catch (error) {
             console.error('Error loading data:', error);
             this.showError('Failed to load market data. Please try again.');
@@ -201,6 +223,16 @@ class MarketDashboard {
             document.getElementById('sp500Price').textContent = `$${this.data.sp500.price.toFixed(2)}`;
             const changeEl = document.getElementById('sp500Change');
             const changeText = `${this.data.sp500.change >= 0 ? '+' : ''}${this.data.sp500.change.toFixed(2)} (${this.data.sp500.changePercent.toFixed(2)}%)`;
+            changeEl.textContent = changeText;
+            changeEl.className = `change ${this.data.sp500.change >= 0 ? 'positive' : 'negative'}`;
+            document.getElementById('sp500Updated').textContent = this.data.sp500.lastUpdated;
+        }
+
+        // Update VIX card
+        if (this.data.vix) {
+            document.getElementById('vixPrice').textContent = this.data.vix.price.toFixed(2);
+            const changeEl = document.getElementById('vixChange');
+            const changeText = `${this.data.vix.change >= 0 ? '+' : ''}${this.data.vix.change.toFixed(2)} (${this.data.vix.changePercent.toFixed(2)}%)`;
             changeEl.textContent = changeText;
             changeEl.className = `change ${this.data.vix.change >= 0 ? 'positive' : 'negative'}`;
             
@@ -429,78 +461,6 @@ class MarketDashboard {
         return { labels, values };
     }
 
-    generateAnalysis() {
-        // Market Summary
-        const marketSummary = document.getElementById('marketSummary');
-        let summaryHtml = '<ul>';
-        
-        if (this.data.sp500) {
-            const trend = this.data.sp500.change >= 0 ? 'gaining' : 'declining';
-            summaryHtml += `<li>S&P 500 is ${trend} ${Math.abs(this.data.sp500.changePercent).toFixed(2)}% today</li>`;
-        }
-        
-        if (this.data.vix) {
-            const volatilityLevel = this.data.vix.price < 20 ? 'low' : this.data.vix.price < 30 ? 'moderate' : 'high';
-            summaryHtml += `<li>Market volatility is currently ${volatilityLevel} (VIX: ${this.data.vix.price.toFixed(2)})</li>`;
-        }
-        
-        if (this.data.fearGreed) {
-            summaryHtml += `<li>Investor sentiment shows ${this.data.fearGreed.status.toLowerCase()} (${this.data.fearGreed.value}/100)</li>`;
-        }
-        
-        summaryHtml += '</ul>';
-        marketSummary.innerHTML = summaryHtml;
-
-        // Risk Assessment
-        const riskAssessment = document.getElementById('riskAssessment');
-        let riskLevel = 'Moderate';
-        let riskColor = '#f59e0b';
-        let riskAdvice = 'Monitor market conditions closely.';
-        
-        if (this.data.vix && this.data.fearGreed) {
-            if (this.data.vix.price > 30 || this.data.fearGreed.value < 25) {
-                riskLevel = 'High';
-                riskColor = '#ef4444';
-                riskAdvice = 'Consider defensive positioning and risk management.';
-            } else if (this.data.vix.price < 15 && this.data.fearGreed.value > 75) {
-                riskLevel = 'Low';
-                riskColor = '#10b981';
-                riskAdvice = 'Market conditions appear stable for investment.';
-            }
-        }
-        
-        riskAssessment.innerHTML = `
-            <p>Current Risk Level: <strong style="color: ${riskColor}">${riskLevel}</strong></p>
-            <p>${riskAdvice}</p>
-        `;
-
-        // Key Insights
-        const keyInsights = document.getElementById('keyInsights');
-        let insights = [];
-        
-        if (this.data.sp500 && this.data.vix) {
-            if (this.data.sp500.change > 0 && this.data.vix.price < 20) {
-                insights.push('Bullish sentiment with low volatility suggests stable upward trend');
-            } else if (this.data.sp500.change < 0 && this.data.vix.price > 25) {
-                insights.push('Market decline accompanied by high volatility indicates investor uncertainty');
-            }
-        }
-        
-        if (this.data.fearGreed) {
-            if (this.data.fearGreed.value > 80) {
-                insights.push('Extreme greed levels may signal potential market correction ahead');
-            } else if (this.data.fearGreed.value < 20) {
-                insights.push('Extreme fear could present buying opportunities for long-term investors');
-            }
-        }
-        
-        if (insights.length === 0) {
-            insights.push('Market conditions are within normal ranges');
-        }
-        
-        keyInsights.innerHTML = '<ul>' + insights.map(insight => `<li>${insight}</li>`).join('') + '</ul>';
-    }
-
     updateChartPeriod(period) {
         let days;
         switch (period) {
@@ -614,8 +574,7 @@ class MarketDashboard {
                 vix: this.data.vix,
                 fearGreed: this.data.fearGreed
             },
-            summary: this.generateTextSummary(),
-            recommendations: this.generateRecommendations()
+            summary: this.generateTextSummary()
         };
         
         return digestData;
@@ -643,26 +602,40 @@ class MarketDashboard {
         return summary;
     }
 
-    generateRecommendations() {
-        const recommendations = [];
+    showDemoModeNotification() {
+        // Create demo mode notification
+        const demoDiv = document.createElement('div');
+        demoDiv.className = 'demo-notification';
+        demoDiv.innerHTML = `
+            <div class="demo-content">
+                <span>📊 Demo Mode: Using simulated market data</span>
+                <button onclick="this.parentElement.parentElement.remove()">×</button>
+            </div>
+        `;
         
-        if (this.data.vix && this.data.vix.price > 30) {
-            recommendations.push("High volatility detected - consider defensive strategies");
-        }
+        // Add demo styles
+        demoDiv.style.cssText = `
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: #fef3c7;
+            color: #d97706;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            border: 1px solid #fbbf24;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            z-index: 10000;
+            max-width: 400px;
+        `;
         
-        if (this.data.fearGreed && this.data.fearGreed.value < 25) {
-            recommendations.push("Extreme fear may present buying opportunities");
-        }
+        document.body.appendChild(demoDiv);
         
-        if (this.data.fearGreed && this.data.fearGreed.value > 75) {
-            recommendations.push("Extreme greed - consider taking profits");
-        }
-        
-        if (recommendations.length === 0) {
-            recommendations.push("Market conditions are balanced - maintain current strategy");
-        }
-        
-        return recommendations;
+        // Auto-remove after 10 seconds
+        setTimeout(() => {
+            if (demoDiv.parentElement) {
+                demoDiv.remove();
+            }
+        }, 10000);
     }
 
     showError(message) {
@@ -710,14 +683,4 @@ document.addEventListener('DOMContentLoaded', () => {
 // Export for potential use in other modules
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = MarketDashboard;
-}.className = `change ${this.data.sp500.change >= 0 ? 'positive' : 'negative'}`;
-            document.getElementById('sp500Updated').textContent = this.data.sp500.lastUpdated;
-        }
-
-        // Update VIX card
-        if (this.data.vix) {
-            document.getElementById('vixPrice').textContent = this.data.vix.price.toFixed(2);
-            const changeEl = document.getElementById('vixChange');
-            const changeText = `${this.data.vix.change >= 0 ? '+' : ''}${this.data.vix.change.toFixed(2)} (${this.data.vix.changePercent.toFixed(2)}%)`;
-            changeEl.textContent = changeText;
-            changeEl
+}

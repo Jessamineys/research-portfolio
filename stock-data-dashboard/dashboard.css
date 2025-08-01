@@ -274,59 +274,6 @@
     color: #dc2626;
 }
 
-/* Analysis Section */
-.analysis-section {
-    padding: 4rem 0;
-    background: var(--secondary-color);
-}
-
-.analysis-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-}
-
-.analysis-card {
-    background: white;
-    border-radius: 1rem;
-    padding: 2rem;
-    box-shadow: var(--shadow);
-    transition: all 0.3s ease;
-}
-
-.analysis-card:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-hover);
-}
-
-.analysis-card h3 {
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    color: var(--text-primary);
-}
-
-.analysis-content p {
-    color: var(--text-secondary);
-    line-height: 1.6;
-    margin-bottom: 1rem;
-}
-
-.analysis-content ul {
-    list-style: none;
-    padding: 0;
-}
-
-.analysis-content li {
-    padding: 0.5rem 0;
-    border-bottom: 1px solid #f3f4f6;
-    color: var(--text-secondary);
-}
-
-.analysis-content li:last-child {
-    border-bottom: none;
-}
-
 /* Email Subscription */
 .email-section {
     padding: 4rem 0;
@@ -467,10 +414,6 @@
     }
 
     .charts-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .analysis-grid {
         grid-template-columns: 1fr;
     }
 
