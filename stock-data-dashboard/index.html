@@ -1,1 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Data Dashboard - Jessamine Li</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="../styles.css">
+    <!-- Chart.js for data visualization -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <!-- Date manipulation library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">Jessamine Li</a>
+            <ul class="nav-links">
+                <li><a href="../index.html#home">Home</a></li>
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#portfolio">Work</a></li>
+                <li><a href="../cv/">CV</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+                <li><a href="#dashboard" class="active">Dashboard</a></li>
+            </ul>
+        </div>
+    </nav>
 
+    <!-- Dashboard Header -->
+    <section class="dashboard-header">
+        <div class="container">
+            <h1>Market Data Dashboard</h1>
+            <p>Real-time tracking of VIX, Fear & Greed Index, and S&P 500 performance</p>
+            <div class="last-updated">
+                <span id="lastUpdated">Last updated: --</span>
+                <button id="refreshBtn" class="refresh-btn">🔄 Refresh Data</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Metrics Cards -->
+    <section class="metrics-overview">
+        <div class="container">
+            <div class="metrics-grid">
+                <!-- S&P 500 Card -->
+                <div class="metric-card sp500-card">
+                    <div class="metric-header">
+                        <h3>S&P 500</h3>
+                        <span class="metric-symbol">SPY</span>
+                    </div>
+                    <div class="metric-value">
+                        <span id="sp500Price" class="price">--</span>
+                        <span id="sp500Change" class="change">--</span>
+                    </div>
+                    <div class="metric-footer">
+                        <small id="sp500Updated">--</small>
+                    </div>
+                </div>
+
+                <!-- VIX Card -->
+                <div class="metric-card vix-card">
+                    <div class="metric-header">
+                        <h3>VIX</h3>
+                        <span class="metric-symbol">Volatility Index</span>
+                    </div>
+                    <div class="metric-value">
+                        <span id="vixPrice" class="price">--</span>
+                        <span id="vixChange" class="change">--</span>
+                    </div>
+                    <div class="metric-footer">
+                        <div class="vix-indicator">
+                            <span id="vixStatus" class="status-badge">--</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fear & Greed Card -->
+                <div class="metric-card fear-greed-card">
+                    <div class="metric-header">
+                        <h3>Fear & Greed Index</h3>
+                        <span class="metric-symbol">CNN</span>
+                    </div>
+                    <div class="metric-value">
+                        <span id="fearGreedValue" class="price">--</span>
+                        <span id="fearGreedStatus" class="sentiment">--</span>
+                    </div>
+                    <div class="metric-footer">
+                        <div class="fear-greed-gauge">
+                            <div id="fearGreedGauge" class="gauge-fill"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Charts Section -->
+    <section class="charts-section">
+        <div class="container">
+            <div class="charts-grid">
+                <!-- S&P 500 Chart -->
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h3>S&P 500 Performance</h3>
+                        <div class="time-selector">
+                            <button class="time-btn active" data-period="1D">1D</button>
+                            <button class="time-btn" data-period="5D">5D</button>
+                            <button class="time-btn" data-period="1M">1M</button>
+                            <button class="time-btn" data-period="3M">3M</button>
+                            <button class="time-btn" data-period="1Y">1Y</button>
+                        </div>
+                    </div>
+                    <canvas id="sp500Chart"></canvas>
+                </div>
+
+                <!-- VIX Chart -->
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h3>VIX Volatility Trend</h3>
+                        <div class="vix-levels">
+                            <span class="level low">Low: &lt;20</span>
+                            <span class="level medium">Medium: 20-30</span>
+                            <span class="level high">High: &gt;30</span>
+                        </div>
+                    </div>
+                    <canvas id="vixChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Analysis Section -->
+    <section class="analysis-section">
+        <div class="container">
+            <div class="analysis-grid">
+                <!-- Market Summary -->
+                <div class="analysis-card">
+                    <h3>📊 Market Summary</h3>
+                    <div id="marketSummary" class="analysis-content">
+                        <p>Loading market analysis...</p>
+                    </div>
+                </div>
+
+                <!-- Risk Assessment -->
+                <div class="analysis-card">
+                    <h3>⚠️ Risk Assessment</h3>
+                    <div id="riskAssessment" class="analysis-content">
+                        <p>Calculating risk metrics...</p>
+                    </div>
+                </div>
+
+                <!-- Key Insights -->
+                <div class="analysis-card">
+                    <h3>💡 Key Insights</h3>
+                    <div id="keyInsights" class="analysis-content">
+                        <p>Analyzing market trends...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Email Subscription -->
+    <section class="email-section">
+        <div class="container">
+            <div class="email-subscription">
+                <h3>📧 Daily Market Digest</h3>
+                <p>Get daily market insights delivered to your inbox</p>
+                <form id="emailForm" class="email-form">
+                    <input type="email" id="emailInput" placeholder="Enter your email address" required>
+                    <button type="submit" class="subscribe-btn">Subscribe</button>
+                </form>
+                <small>Daily digest includes: Market performance, volatility analysis, and sentiment indicators</small>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="dashboard-footer">
+                <p>&copy; 2025 Jessamine Li. Market data provided by various financial APIs.</p>
+                <div class="data-sources">
+                    <small>Data sources: Alpha Vantage, Yahoo Finance, CNN Fear & Greed Index</small>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <p>Loading market data...</p>
+        </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>
