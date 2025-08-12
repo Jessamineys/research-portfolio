@@ -134,7 +134,7 @@
 /* Problem Statement */
 .problem-statement {
     background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
-    padding: 3rem;
+    padding: 2rem 3rem;
     border-radius: 1.5rem;
     margin: 3rem 0;
     border-left: 5px solid var(--primary-color);
