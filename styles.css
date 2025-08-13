@@ -5,11 +5,11 @@
 }
 
 :root {
-    --primary-color: #2563eb;
+    --primary-color: #2158E8; /* match RGM case */
     --secondary-color: #f1f5f9;
     --accent-color: #0ea5e9;
     --text-primary: #1e293b;
-    --text-secondary: #64748b;
+    --text-secondary: #475569; /* slightly darker for contrast */
     --white: #ffffff;
     --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     --shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
@@ -151,24 +151,9 @@ nav.scrolled {
     font-weight: 800;
     line-height: 1.1;
     margin-bottom: 1.5rem;
-    /* Safari-optimized gradient text */
-    background: var(--gradient);
-    background: -webkit-linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    /* Fallback for older Safari versions */
-    color: transparent;
+    color: var(--text-secondary);
 }
 
-/* Safari fallback for gradient text */
-@supports not (-webkit-background-clip: text) {
-    .hero-text h1 {
-        color: var(--primary-color);
-        -webkit-text-fill-color: var(--primary-color);
-    }
-}
 
 .hero-text p {
     font-size: 1.25rem;
@@ -258,6 +243,60 @@ nav.scrolled {
     background: var(--gradient);
     background: -webkit-linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* Hero Social Links */
+.hero-social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.hero-social-links a {
+    color: var(--text-secondary);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    border-radius: 50%;
+    background: var(--secondary-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    /* Safari optimization */
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    /* Prevent blurry rendering */
+    width: 40px;
+    height: 40px;
+    /* Force integer positioning */
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.hero-social-links a:hover {
+    color: var(--primary-color);
+    background: var(--white);
+    transform: translateY(-2px) translateZ(0);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.hero-social-links a svg {
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
+    transition: stroke 0.3s ease;
+    /* Fix SVG blurriness */
+    shape-rendering: geometricPrecision;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    /* Ensure crisp rendering */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
 }
 
 /* About Section */
@@ -356,7 +395,7 @@ nav.scrolled {
     padding: 2.5rem;
     box-shadow: var(--shadow);
     border-left: 4px solid transparent;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.3s ease;
     /* Safari optimizations */
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
@@ -365,11 +404,10 @@ nav.scrolled {
     position: relative;
 }
 
+/* Keep subtle lift animation without highlight changes */
 .education-item:hover {
     -webkit-transform: translateY(-5px) translateZ(0);
     transform: translateY(-5px) translateZ(0);
-    box-shadow: var(--shadow-hover);
-    border-left-color: var(--primary-color);
 }
 
 /* Education Icon - Consistent Sizing */
@@ -385,7 +423,6 @@ nav.scrolled {
     background: var(--secondary-color);
     border: 3px solid var(--white);
     box-shadow: 0 8px 16px -4px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
     /* Safari optimizations */
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
@@ -405,7 +442,6 @@ nav.scrolled {
     background: var(--secondary-color);
     border: 3px solid var(--white);
     box-shadow: 0 8px 16px -4px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
     /* Safari optimizations */
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
@@ -434,13 +470,7 @@ nav.scrolled {
     border-radius: 0rem;
 }
 
-/* Enhanced hover effect for icons */
-.education-item:hover .education-icon {
-    -webkit-transform: scale3d(1.08, 1.08, 1) translateZ(0);
-    transform: scale3d(1.08, 1.08, 1) translateZ(0);
-    box-shadow: 0 12px 24px -6px rgba(37, 99, 235, 0.25);
-    border-color: var(--primary-color);
-}
+/* Hover effects removed for Education section */
 
 /* Education Content - Better Structure */
 .education-content {
@@ -638,6 +668,15 @@ nav.scrolled {
     gap: 1rem;
 }
 
+/* Section footnote (subtle disclaimer text under sections) */
+.section-footnote {
+    text-align: center;
+    margin-top: 3rem;
+    color: var(--text-secondary);
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
 /* Contact Section */
 .contact {
     padding: 6rem 0;
@@ -711,6 +750,12 @@ footer {
     padding: 3rem 0;
 }
 
+footer p {
+    letter-spacing: 0.75px;
+    font-size: 1rem;
+    opacity: 0.8;
+}
+
 .social-links {
     display: flex;
     justify-content: center;
@@ -721,11 +766,26 @@ footer {
 .social-links a {
     color: var(--white);
     font-size: 1.5rem;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
 }
 
 .social-links a:hover {
     color: var(--accent-color);
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.social-links a svg {
+    width: 24px;
+    height: 24px;
+    stroke: currentColor;
+    transition: stroke 0.3s ease;
 }
 
 /* Animations - Safari-optimized */
@@ -756,10 +816,8 @@ html {
 /* Safari-specific fixes */
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
     .hero-text h1 {
-        /* Additional Safari gradient text fallback */
-        background: -webkit-linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        background: none;
+        -webkit-text-fill-color: var(--text-secondary);
     }
 }
 
@@ -798,6 +856,16 @@ html {
     .profile-img {
         width: 250px;
         height: 250px;
+    }
+
+    /* Hero social links mobile */
+    .hero-social-links {
+        gap: 0.75rem;
+        margin-top: 1rem;
+    }
+    
+    .hero-social-links a {
+        padding: 0.75rem;
     }
 
     /* Education responsive */
