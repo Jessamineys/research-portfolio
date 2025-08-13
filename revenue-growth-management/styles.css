@@ -207,7 +207,6 @@
     padding: 2.5rem;
     border-radius: 1.5rem;
     box-shadow: var(--shadow);
-    border-left: 4px solid var(--primary-color);
     transition: all 0.3s ease;
     /* Safari optimization */
     -webkit-transform: translateZ(0);
