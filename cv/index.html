@@ -62,7 +62,7 @@
                     <h3>Languages</h3>
                     <p>English; Mandarin (Native)</p>
                 </div>
-                <a href="./jessamine_li_cv_web.pdf" target="_blank" rel="noopener" class="download-btn">Download PDF</a>
+                <a href="./jessamine_li_cv_web.pdf" target="_blank" rel="noopener" class="download-btn" id="download-pdf-btn">Download PDF</a>
             </div>
         </aside>
 
@@ -333,6 +333,28 @@
 
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // GA4 Event Tracking for Download PDF Button
+        document.addEventListener('DOMContentLoaded', function() {
+            const downloadBtn = document.getElementById('download-pdf-btn');
+            if (downloadBtn) {
+                downloadBtn.addEventListener('click', function(event) {
+                    // Send event to GA4
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'file_download', {
+                            'event_category': 'engagement',
+                            'event_label': 'CV PDF Download',
+                            'file_name': 'jessamine_li_cv_web.pdf',
+                            'file_extension': 'pdf',
+                            'link_url': './jessamine_li_cv_web.pdf'
+                        });
+                        
+                        // Optional: Log to console for debugging (remove in production)
+                        console.log('GA4 Event: CV PDF download tracked');
+                    }
+                });
+            }
+        });
         
         // Add navbar scroll behavior to match other pages
         (function() {
