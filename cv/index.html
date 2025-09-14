@@ -338,7 +338,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             const downloadBtn = document.getElementById('download-pdf-btn');
             if (downloadBtn) {
-                downloadBtn.addEventListener('click', function(event) {
+                downloadBtn.addEventListener('download_click', function(event) {
                     // Send event to GA4
                     if (typeof gtag !== 'undefined') {
                         gtag('event', 'file_download', {
