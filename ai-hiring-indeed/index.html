@@ -12,385 +12,321 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI-Assisted Hiring - Case Study | Jessamine Li</title>
+    <title>AI-Powered Hiring | Jessamine Li</title>
+    <meta name="description" content="Equitable & Efficient AI-Assisted Hiring for Small and Medium-Sized Business Employers at Indeed.">
+    <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- Navigation -->
     <nav id="navbar">
         <div class="nav-container">
-            <a href="../index.html" class="logo">Jessamine Li</a>
+            <a href="../" class="logo">Jessamine Li</a>
             <ul class="nav-links">
-                <li><a href="../index.html#home">Home</a></li>
-                <li><a href="../index.html#about">About</a></li>
-                <li><a href="../index.html#portfolio">Work</a></li>
-                <li><a href="../cv/index.html">CV</a></li>
-                <li><a href="../index.html#contact">Contact</a></li>
+                <li><a href="../#home">Home</a></li>
+                <li><a href="../#about">About</a></li>
+                <li><a href="../#portfolio">Work</a></li>
+                <li><a href="../cv/">CV</a></li>
+                <li><a href="../#contact">Contact</a></li>
             </ul>
-            <button class="mobile-menu-toggle">☰</button>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
+    <!-- Case Study Hero -->
+    <section class="case-study-hero">
         <div class="container">
             <div class="hero-content">
-                <a href="../index.html#portfolio" class="back-link">← Back to Portfolio</a>
-                
-                <div class="hero-icon">
-                    <div class="logo-container">
-                        <img src="../assets/images/indeed-logo.png" alt="Indeed logo" loading="lazy" onerror="this.style.display='none'; this.parentElement.parentElement.innerHTML='🏢*'; this.parentElement.parentElement.classList.add('fallback-icon');">
-                        <span class="logo-asterisk">*</span>
-                    </div>
+                <div class="hero-text">
+                    <h1 class="hero-title">Equitable, Efficient AI-assisted Hiring for SMB</h1>
+                    <p class="subtitle">Enterprise software generative and evaluative research on AI-assisted hiring solution from concept to prototype: optimize hiring experience and find the right candidate for <strong>small and medium-sized business (SMB)</strong>.</p>
                 </div>
-                
-                <h1>AI-Assisted Hiring Research</h1>
-                <p class="hero-subtitle">
-                    Enhancing effective and equitable AI-assisted hiring through human-centered design and comprehensive user research
-                </p>
-                
-                <div class="project-meta">
-                    <div class="meta-item">
-                        <div class="meta-label">Duration</div>
-                        <div class="meta-value">10 weeks</div>
-                    </div>
-                    <div class="meta-item">
-                        <div class="meta-label">My Role</div>
-                        <div class="meta-value">UX Researcher</div>
-                    </div>
-                    <div class="meta-item">
-                        <div class="meta-label">Team</div>
-                        <div class="meta-value">4 members</div>
-                    </div>
-                    <div class="meta-item">
-                        <div class="meta-label">Client</div>
-                        <div class="meta-value">Indeed</div>
-                    </div>
+                <div class="hero-image">
+                    <img src="../assets/images/indeed-head.png" alt="Indeed AI-Assisted Hiring Interface" />
                 </div>
             </div>
         </div>
     </section>
 
-
-    <!-- Main Content -->
-    <section class="main-content">
-        <div class="container">
-            <!-- Executive Summary -->
-            <div class="content-section">
-                <h2 class="section-title">Executive Summary</h2>
-                <div class="section-content">
-                    <p>Hiring has always been the heartbeat of workforce development. But today it faces unique challenges—traditional hiring struggles to keep pace with shifting demands. AI offers a transformative opportunity to expand talent pools for those historically overlooked.</p>
-                    
-                    <p>Indeed, despite its global reach and volume, found that employers do not trust AI-generated candidate recommendations. Our research—spanning literature reviews, Reddit analysis, user interviews, and competitive benchmarking—reveals key flaws in AI-assisted hiring: employers don't trust AI fully because they don't understand why candidates are ranked or excluded.</p>
-                    
-                    <p><strong>The real question isn't whether bias exists—it's how we manage it to create fairer, smarter hiring processes.</strong></p>
+    <!-- Case Study Content -->
+    <div class="case-content">
+        <section class="section">
+        <h2 class="section-title">TL;DR</h2>
+        <p>Faced with employers’ lack of trust in AI screening tools for large applicant pools, I led foundational research and design validation to deliver an AI-assisted, human-in-the-loop workflow with 4 core features, which achieved <strong>organization-wide visibility and cross-functional buy-in from 2 product teams and senior leadership at Indeed</strong>.</p>
+        <div class="video-container">
+                <div class="video-wrapper">
+                    <iframe width="2240" height="630" src="https://www.youtube.com/embed/V4A8360i53g?si=lxE6S45C7E80edrg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
-                
-                <!-- Video positioned after summary text -->
-                <div class="video-container">
-                    <div class="video-wrapper">
-                        <iframe width="2240" height="630" src="https://www.youtube.com/embed/V4A8360i53g?si=lxE6S45C7E80edrg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project Context -->
-            <div class="content-section">
-                <h2 class="section-title">Project Context & Goals</h2>
-                <div class="section-content">
-                    <p>Indeed is a global leader in the job marketplace, connecting over 350 million unique visitors monthly and supporting 525 million global job seeker profiles. Despite this reach, the platform faces critical challenges where employers struggle to find high-quality, relevant candidates, and AI-powered candidate summaries are often seen as too generic, undermining employer trust.</p>
-                </div>
-                
-                <div class="process-grid">
-                    <div class="process-card">
-                        <div class="process-icon">🎯</div>
-                        <div class="process-title">Reduce Key Bottlenecks</div>
-                        <div class="process-description">Address the lack of visibility into best-fit talent despite millions of profiles and job listings</div>
-                    </div>
-                    <div class="process-card">
-                        <div class="process-icon">🔍</div>
-                        <div class="process-title">Enhance AI Transparency</div>
-                        <div class="process-description">Improve decision support by providing comprehensible explanations for AI recommendations</div>
-                    </div>
-                    <div class="process-card">
-                        <div class="process-icon">⚙️</div>
-                        <div class="process-title">Optimize User Workflow</div>
-                        <div class="process-description">Align AI processes to target user workflows and daily hiring practices</div>
-                    </div>
-                    <div class="process-card">
-                        <div class="process-icon">⚖️</div>
-                        <div class="process-title">Mitigate Implicit Bias</div>
-                        <div class="process-description">Acknowledge and address various forms of bias through ongoing efforts and design</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Research Overview -->
-            <div class="content-section">
-                <h2 class="section-title">Research Methodology</h2>
-                <div class="section-content">
-                    <p>Our research approach combined multiple methodologies to gain comprehensive insights into AI-assisted hiring challenges and opportunities:</p>
-                </div>
-                
-                <div class="process-grid">
-                    <div class="process-card">
-                        <div class="process-icon">📚</div>
-                        <div class="process-title">Literature Review</div>
-                        <div class="process-description">Analyzed existing research on AI hiring, ethical concerns, efficiency gains, and user adoption challenges</div>
-                    </div>
-                    <div class="process-card">
-                        <div class="process-icon">💬</div>
-                        <div class="process-title">Reddit Analysis</div>
-                        <div class="process-description">Scraped Reddit threads to identify real-world perceptions, pain points, and expectations regarding AI in recruitment</div>
-                    </div>
-                    <div class="process-card">
-                        <div class="process-icon">🎤</div>
-                        <div class="process-title">User Interviews</div>
-                        <div class="process-description">Conducted interviews with 8 recruiters and hiring managers to understand experiences and attitudes toward AI tools</div>
-                    </div>
-                    <div class="process-card">
-                        <div class="process-icon">🔬</div>
-                        <div class="process-title">Competitive Analysis</div>
-                        <div class="process-description">Gathered information about 4 corporations and startups to identify opportunities and market gaps</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Research Insights -->
-            <div class="content-section">
-                <h2 class="section-title">Key Research Insights</h2>
-                <div class="insights-grid">
-                    <div class="insight-card">
-                        <div class="insight-number">1</div>
-                        <div class="insight-title">Ideal Candidate Mental Framework</div>
-                        <div class="insight-description">Employers tend to have an "Ideal Candidate" mental framework that guides their job postings and candidate selection processes</div>
-                    </div>
-                    <div class="insight-card">
-                        <div class="insight-number">2</div>
-                        <div class="insight-title">Collaborative Hiring Process</div>
-                        <div class="insight-description">Collaboration among hiring managers, recruiters, and leaders is preferred and crucial throughout the hiring process</div>
-                    </div>
-                    <div class="insight-card">
-                        <div class="insight-number">3</div>
-                        <div class="insight-title">LLM Assistance in Job Descriptions</div>
-                        <div class="insight-description">Large Language Models could effectively help employers develop and review job descriptions, especially for compliance</div>
-                    </div>
-                    <div class="insight-card">
-                        <div class="insight-number">4</div>
-                        <div class="insight-title">Holistic Matching Approach</div>
-                        <div class="insight-description">Matching isn't about 100% perfect matching—consider transferable skills and adopt a whole person viewpoint</div>
-                    </div>
-                    <div class="insight-card">
-                        <div class="insight-number">5</div>
-                        <div class="insight-title">Trust Through Transparency</div>
-                        <div class="insight-description">AI Transparency and Human Control are key points to build up trust of AI systems among users</div>
-                    </div>
-                    <div class="insight-card">
-                        <div class="insight-number">6</div>
-                        <div class="insight-title">Fairness as Priority</div>
-                        <div class="insight-description">AI Fairness is the key focus in academic research to ensure correct application in industry settings</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Design Solutions -->
-            <div class="content-section">
-                <h2 class="section-title">Design Solutions</h2>
-                <div class="section-content">
-                    <p>Based on our research insights, we developed three key design solutions to address the core challenges in AI-assisted hiring:</p>
-                </div>
-                
-                <div class="process-grid">
-                    <div class="process-card">
-                        <div class="process-icon">🎯</div>
-                        <div class="process-title">Role Calibration</div>
-                        <div class="process-description">A structured flow to validate employer intentions by translating human hiring intent into structured signals for AI-assisted candidate screening</div>
-                    </div>
-                    <div class="process-card">
-                        <div class="process-icon">🔍</div>
-                        <div class="process-title">Smart Screen</div>
-                        <div class="process-description">Advanced screening tools that provide evidence-based data to increase confidence before moving candidates further into the pipeline</div>
-                    </div>
-                    <div class="process-card">
-                        <div class="process-icon">📄</div>
-                        <div class="process-title">Resume Citation</div>
-                        <div class="process-description">Enhanced trust through direct resume citations supporting AI results, providing transparent explanations for AI recommendations</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Impact & Results -->
-            <div class="content-section">
-                <h2 class="section-title">Project Impact</h2>
-                <div class="section-content">
-                    <p>Our research and design solutions addressed critical gaps in AI-assisted hiring, providing actionable insights for Indeed's product strategy:</p>
-                </div>
-                
-                <!-- Key Outcomes -->
-                <div style="margin-bottom: 3rem;">
-                    <h3 style="color: var(--text-primary); font-size: 1.5rem; font-weight: 600; margin-bottom: 1.5rem;">Key Outcomes</h3>
-                    
-                    <div style="margin-bottom: 2rem;">
-                        <h4 style="color: var(--primary-color); font-weight: 600; margin-bottom: 0.5rem;">Enhanced AI Transparency and Trust</h4>
-                        <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">Our resume citation system directly addresses the core issue of employer distrust in AI recommendations. By providing clear, traceable connections between AI decisions and candidate qualifications, we enable employers to understand and validate AI suggestions rather than dismissing them as "black box" outputs.</p>
-                    </div>
-                    
-                    <div style="margin-bottom: 2rem;">
-                        <h4 style="color: var(--primary-color); font-weight: 600; margin-bottom: 0.5rem;">Streamlined Intent Capture Process</h4>
-                        <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">The role calibration workflow we developed transforms vague hiring preferences into structured, actionable criteria that AI systems can interpret consistently. This reduces the gap between what employers want and what AI delivers, leading to more relevant candidate matches.</p>
-                    </div>
-                    
-                    <div style="margin-bottom: 2rem;">
-                        <h4 style="color: var(--primary-color); font-weight: 600; margin-bottom: 0.5rem;">Holistic Candidate Evaluation</h4>
-                        <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">Our research revealed that perfect keyword matching often misses qualified candidates with transferable skills. The smart screening tools we designed encourage employers to consider candidates' full potential, potentially expanding diversity in hiring while maintaining quality standards.</p>
-                    </div>
-                </div>
-                
-                <!-- Strategic Value -->
-                <div style="background: var(--secondary-color); padding: 2.5rem; border-radius: 1rem; margin-bottom: 3rem;">
-                    <h3 style="color: var(--text-primary); font-size: 1.5rem; font-weight: 600; margin-bottom: 1.5rem;">Strategic Value for Indeed</h3>
-                    
-                    <div style="margin-bottom: 2rem;">
-                        <h4 style="color: var(--text-primary); font-weight: 600; margin-bottom: 0.5rem;">Product Roadmap Clarity</h4>
-                        <p style="color: var(--text-secondary); line-height: 1.7;">Our findings provide Indeed with a clear pathway for improving their Smart Sourcing platform. The three integrated solutions address the complete hiring workflow while building incrementally on Indeed's existing AI capabilities.</p>
-                    </div>
-                    
-                    <div style="margin-bottom: 2rem;">
-                        <h4 style="color: var(--text-primary); font-weight: 600; margin-bottom: 0.5rem;">Competitive Differentiation</h4>
-                        <p style="color: var(--text-secondary); line-height: 1.7;">This positions Indeed to differentiate from competitors through trustworthy, transparent AI tools that prioritize human agency while leveraging automation efficiency.</p>
-                    </div>
-                    
-                    <div>
-                        <h4 style="color: var(--text-primary); font-weight: 600; margin-bottom: 0.5rem;">Responsible AI Framework</h4>
-                        <p style="color: var(--text-secondary); line-height: 1.7;">We established clear principles for human-AI collaboration that acknowledge bias as an inherent challenge while providing concrete mechanisms for mitigation, ensuring accountability remains with human decision-makers.</p>
-                    </div>
-                </div>
-                
-                <!-- Broader Impact -->
-                <div>
-                    <h3 style="color: var(--text-primary); font-size: 1.5rem; font-weight: 600; margin-bottom: 1.5rem;">Industry Impact</h3>
-                    <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1rem;">Beyond Indeed's immediate needs, our research contributes to the broader conversation about ethical AI implementation in high-stakes decisions like hiring. The methodologies and principles we developed can inform industry standards and regulatory approaches to AI fairness in employment contexts.</p>
-                    
-                    <p style="color: var(--text-secondary); line-height: 1.7;">Our human-centered approach to AI transparency and bias mitigation provides a replicable framework that other organizations can adapt for responsible AI deployment in hiring and beyond.</p>
-                </div>
-            </div>
         </div>
-    </section>
+        </section>
+        <!-- Problem Space -->
+        <section class="section">
+            <h2 class="section-title">Problem Space</h2>
+            <p>Finding the right candidates has always been a headache for employers. Even with all kinds of Application Tracking System (ATS) and algorithms available, employers struggle to translate their time and efforts spent on these tools into efficient hiring and decision-making. </p>
+            <!-- <img src="../assets/images/rgm-summary.jpg" alt="Revenue Growth Management Summary" style="width: 100%; max-width: 800px; height: auto; margin: 2rem auto; display: block; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"> -->
+            <div class="problem-statement">
+                <h3 class="challenge-title">The Challenge</h3>
+                <p style="margin-bottom: 1rem;"> In large applicant pools, employers (EMPs) struggle to identify qualified candidates even with AI toolsdesigned to facilitate resume screening. Without clarity, context, and control, EMPs lack trust to evaluate candidates confidently with AI, leading teams to abandon the tool.</p>
+                <p>We identified a <strong>gap</strong> in employer expectation and AI recommendations: despite internal data showing nearly 60% of applicants meet the listed qualifications, candidate quality remains the top employer complaint. The gap lies not in supply but in alignment: a disconnect between employer expectations and how the system surfaces matches.</p>
+            </div>
+            <p>How would we reimagine the current SMB employer experience to address these opportunities with GenAI at the core?</p>
+        </section>
+        
+        <section class="section">
+            <h2 class="section-title">Project Challenges & Constraints</h2>
+            <p>After stakeholder meeting with Indeed Employer Labs, I have identified the following constraints:</p>
+            <ul style="margin-bottom: 2rem; line-height: 1.7;">
+                <ol>
+                    <li>Since Indeed has already been developing a conversation agent, solution needs to go beyond that</li>
+                    <li>Given a less-than-5-month timeline for Capstone project, team can only focus</li>
+                </ol>
+            </ul>
+            <p>Considering the constraints and timeline, we decided to focus on the early stage of hiring before interviewing candidates.</p>
+            <img src="../assets/images/indeed-early-stage-hiring-2.png" alt="Project Scope on Early Stage Hiring" style="width: 100%; max-width: 1100px; height: auto; margin: 2rem auto; display: block; border-radius: 8px;">
+        </section>
 
-    <!-- Impact Section -->
-    <section class="impact-section">
-        <div class="container">
-            <h2 class="section-title" style="text-align: center;">Research Outcomes</h2>
-            <div class="impact-grid">
-                <div class="impact-card">
-                    <div class="impact-number">8</div>
-                    <div class="impact-label">Recruiter Interviews</div>
+        <!-- Research Approach -->
+        <section class="section">
+            <h2 class="section-title">Generative and Strategic Research</h2>
+            
+            <!-- <h3 style="margin-bottom: 1rem;">My Role & Responsibilities</h3>
+            <p style="margin-bottom: 2rem;">As the <strong>Lead UX Researcher</strong>, I designed and executed the complete research strategy, collaborating closely with product management and UX design leads to ensure findings would directly inform strategic product decisions.</p>
+             -->
+            <h3 class="section-heading">Research Goals</h3>
+            <ul style="margin-bottom: 2rem; line-height: 1.7;">
+                <li><strong>Understand</strong> the current landscape and application of AI in hiring: service and products from Indeed’s competitors (Competitive Analysis)</li>
+                <li><strong>Explore</strong> ethical considerations in using AI to hire (Reddit Analysis & Literature Review)</li>
+                <li><strong>Identify</strong> the current pain points of SMB employers in early stage of hiring (In-depth User Interview)</li>
+            </ul>
+
+            <h3 class="section-heading">Research Questions</h3>
+            <div class="research-questions">
+                <ol>
+                    <li><strong>What are some existing solutions of AI-assisted hiring?</strong></li>
+                    <li><strong>How are job seekers currently using AI to look for jobs?</strong></li>
+                    <li><strong>How are employers currently using AI to look for candidates?</strong></li>
+                    <li><strong>What concerns in ethics, trust, and bias emerge from AI-assisted hiring?</strong></li>
+                </ol>
+            </div>
+
+            <h3 class="section-heading">Methodology</h3>
+            <div class="methodology-grid">
+                <div class="method-card">
+                    <div class="method-icon">🌐</div>
+                    <h4 class="method-title">Reddit Analysis</h4>
+                    <p>Analyze 2000+ recent posts (posted within 6 months) from r/Indeedjobs and r/recruiting collected via Reddit API</p>
                 </div>
-                <div class="impact-card">
-                    <div class="impact-number">6</div>
-                    <div class="impact-label">Key Insights</div>
+                <div class="method-card">
+                    <div class="method-icon">📖</div>
+                    <h4 class="method-title">Literature Review</h4>
+                    <p>Review 20 papers published within 5 years on AI use in hiring and job seeking</p>
                 </div>
-                <div class="impact-card">
-                    <div class="impact-number">3</div>
-                    <div class="impact-label">Design Solutions</div>
+                <div class="method-card">
+                    <div class="method-icon">📊</div>
+                    <h4 class="method-title">Competitive Analysis</h4>
+                    <p>Compare current service and solutions offered by Indeed’s direct competitors and other companies</p>
                 </div>
-                <div class="impact-card">
-                    <div class="impact-number">10</div>
-                    <div class="impact-label">Week Timeline</div>
+                <div class="method-card">
+                    <div class="method-icon">👥</div>
+                    <h4 class="method-title">In-depth User Interview</h4>
+                    <p>Conduct 60-minute sessions with 5 SMB employers, consisting of 3 recruiters and 3 hiring managers, with one participant serving in both roles</p>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Ethical Considerations -->
-    <section class="main-content">
-        <div class="container">
-            <div class="content-section">
-                <h2 class="section-title">Ethical Considerations & Social Impact</h2>
-                <div class="section-content">
-                    <p>Our research identified several critical ethical considerations that must be addressed in AI-assisted hiring systems:</p>
+            <h3 class="section-heading">My Role</h3>
+            <p>I collaborated with 1 researcher and 2 designers in the generative research phase. I led the Reddit analysis and in-depth user interviews and supported literature review and competitive analysis.</p>
+            <img src="../assets/images/indeed-role-1.png" alt="My Role Process Map" style="width: 100%; max-width: 1100px; height: auto; margin: 1rem auto; display: block;">  
+        </section>
+
+        <!-- Research Process -->
+        <section class="section">
+            <h2 class="section-title">Research Execution</h2>
+            <p style="margin-bottom: 2rem;">To answer our research questions and lay the groundwork for in-depth primary research on EMP pain points, we first conducted observational and secondary research to develop a broad understanding of the space.</p>
+            <h3 class="section-heading">Reddit Analysis</h3>
+            <p style="margin-bottom: 2rem;">I led the Reddit analysis, collecting 2,000+ posts via <strong>Reddit API</strong> to capture current discussions among job seekers and EMPs. I first used <strong>Latent Dirichlet Allocation (LDA)</strong> (an unsupervised machine learning technique) to rapidly identify groups of words that tend to appear together, which can then be interpreted as “themes." Then, I manually coded the posts based on the preliminary themes and derived insights based on the initial themes.</p>
+            <div style="display: flex; justify-content: center; gap: 1rem;">
+                <img src="../assets/images/indeed-subreddit.png" 
+                    alt="Subreddit source" 
+                    style="width: 48%; height: auto; border-radius: 5px; margin-bottom: 2rem;">
+                
+                <img src="../assets/images/indeed-reddit-data.gif" 
+                    alt="Raw Reddit Data JSON file" 
+                    style="width: 48%; height: auto; border-radius: 5px; margin-bottom: 2rem;">
+            </div>
+
+            <li style="margin-bottom: 1rem;"><strong>Job Seekers:</strong> Reported frustration with lengthy, unclear hiring processes involving multiple interview rounds, lack of feedback from employers, and scams in job postings. They also expressed concerns about rapid ATS-driven rejections and perceived bias in DEI policies, raising broader questions about fairness and transparency.</li>
+            <li style="margin-bottom: 1rem;"><strong>Employers:</strong> Described challenges in managing overwhelming volumes of applications, with many candidates applying without meeting basic qualifications. Recruiters noted the need to make quick judgment calls under time pressure and highlighted the difficulty of thoroughly reviewing every resume given competing responsibilities.</li>
+            <li style="margin-bottom: 1rem;"><strong>Both:</strong> Shared skepticism around AI in hiring—job seekers suspect automated systems are unfairly filtering them out, while recruiters emphasized that AI is minimally used, often manual, and not as advanced or effective as job seekers assume.</li>
+
+            <!-- <p style="margin-bottom: 2rem;">I found that job seekers tend to share about frustration with lengthy and unclear hiring processes, scams, rapid ATS rejections, and perceived bias in DEI policies, raising concerns about fairness and transparency. In constrast, employers struggle to sift through high volumes of unqualified applications, often making quick judgment calls under time pressure. Both sides show skepticism toward AI in hiring—job seekers fear unfair automated rejections, while recruiters emphasize AI is minimally used and often ineffective.</p> -->
+            
+            <div class="key-learnings">
+                <div class="learning-section">
+                    <h4>Initial Disagreement from Stakeholders</h4>
+                    <p>Marketing stakeholders initially questioned the value of this research and were concerned about biased voices from r/IndeedJobs. I emphasized that our objective was not to critique Indeed, but to surface job seekers’ concerns about employers’ use of AI technologies and invited them to think about the importance of incorporating perspectives from both sides of the hiring process, so that as a team, we could build a more equitable tool. Eventually, I gained their buy-in to proceed.</p>
+                </div>
+            </div>
+
+            <!-- <h4 style="margin-bottom: 1rem;"><strong>Initial Disagreement from Stakeholders</strong></h4>
+            <p style="margin-bottom: 2rem;">Marketing stakeholders initially questioned the value of this research and were concerned about biased voices from r/IndeedJobs. I emphasized that our objective was not to critique Indeed, but to surface job seekers’ concerns about employers’ use of AI technologies and invited them to think about the importance of incorporating perspectives from both sides of the hiring process, so that as a team, we could build a more equitable tool. Eventually, I gained their buy-in to proceed.</p> -->
+
+            <h3 class="section-heading">Literature Review</h3>
+
+            <h3 class="section-heading">Competitive Analysis</h3>
+            <img src="../assets/images/indeed-competitive-1.jpg" alt="Competitive Analysis" style="width: 100%; max-width: 1100px; height: auto; margin: 1rem auto; display: block; margin-bottom: 2rem;"> 
+                <!-- <p style="margin-bottom: 2rem;">We analyzed key moats that strengthen Indeed as a business compared to its direct and indirect competitors in job-fulfillment tools.</p>
+            <div class="analysis-container">
+            <img src="../assets/images/indeed-competitive.jpg" alt="Competitive Analysis">
+                <div class="analysis-text">
+                    <ul>
+                    <li><strong>Indeed & ZipRecruiter</strong> focus on high-volume job posting and broad reach, with active job seeker engagement.</li>
+                    <li><strong>LinkedIn</strong> leverages professional networks and AI-driven sourcing. The AI-assisted search helps populate the right filters and additional suggestions to help match criteria better.</li>
+                    <li><strong>Eightfold.ai</strong> stands out for deep learning capabilities, offering skill validation call out.</li>
+                    <li><strong>Tezi</strong> operates 24/7 proactively and independently in Slack, working with both HMs and recruiters. Have calibration process to iterate AI and is validated by humans. Help reduce recruiting agency cost up to $40K.</li>
+                    </ul>
+                </div>
+            </div> -->
+
+
+            <h3 class="section-heading">In-depth User Interviews</h3>
+            <p></p>
+            
+
+            <!-- <div style="background: var(--secondary-color); padding: 2rem; border-radius: 1rem; margin: 2rem 0;">
+                <p style="margin-bottom: 1rem;"><strong>Target User Persona: "Igor"</strong> - Sales managers responsible for overseeing CPG product sales to assigned customers, managing promotion plans to ensure compliance and achieve business goals.</p>
+                <p style="margin-bottom: 1rem;"><strong>Key Frustration:</strong> Navigating multiple disconnected systems to manage customer relationships and promotion plans, creating operational inefficiency.</p>
+                <p><strong>Primary Need:</strong> Streamlined tools to complete planning and editing tasks efficiently, enabling more time for customer relationship building.</p>
+            </div> -->
+        </section>
+
+        <!-- Key Findings -->
+        <section class="section">
+            <h2 class="section-title">Key Findings & Strategic Recommendations</h2>
+            <div class="findings-grid">
+                <div class="finding-card">
+                    <div class="finding-title">Universal Microsoft Excel Integration Dependency</div>
+                    <p>All 5 participants utilize Microsoft Excel as a critical touchpoint throughout the editing and updating process, particularly for specific data category management.</p>
+                    <div class="recommendation">
+                        <div class="recommendation-title">Strategic Recommendation</div>
+                        <p><strong>New Feature: Microsoft Excel Upload Integration</strong> – Incorporate seamless Excel upload capability within both creation and edit workflows to eliminate manual data transfer steps.</p>
+                    </div>
+                </div>
+
+                <div class="finding-card">
+                    <div class="finding-title">Dynamic Guardrail Changes Prevent Full Automation</div>
+                    <p>Annual spending activities are subject to mid-year guardrail modifications due to market volatility and policy adjustments, making complete automation unreliable.</p>
+                    <div class="recommendation">
+                        <div class="recommendation-title">Strategic Recommendation</div>
+                        <p><strong>New Feature: Flexible Configuration Framework</strong> – Develop an adaptable system allowing user-controlled adjustments within established guardrail parameters.</p>
+                    </div>
+                </div>
+
+                <div class="finding-card">
+                    <div class="finding-title">Complete Distrust in Automated Plan Maintenance</div>
+                    <p>100% of users expressed no confidence in automated plan maintenance, requiring manual intervention for quality assurance and control.</p>
+                    <div class="recommendation">
+                        <div class="recommendation-title">Strategic Recommendation</div>
+                        <p><strong>Roadmap Adjustment: Deprioritize Full Automation</strong> – Shift focus from automation to user-assisted workflows until co-innovation partners demonstrate demand.</p>
+                    </div>
+                </div>
+
+                <div class="finding-card">
+                    <div class="finding-title">Consistent Editing Strategies Across Promotion Types</div>
+                    <p>Users apply uniform editing approaches regardless of promotion duration, indicating opportunity for workflow standardization.</p>
+                    <div class="recommendation">
+                        <div class="recommendation-title">Strategic Recommendation</div>
+                        <p><strong>Design Strategy: Unified Workflow Architecture</strong> – Eliminate differentiated editing workflows in favor of a single, optimized editing experience.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Business Impact -->
+        <section class="section">
+            <h2 class="section-title">Outcomes & Impacts</h2>
+            <h3 class="section-heading">Outcomes</h3>
+            <div class="design-outcomes">
+                <!-- <ol>
+                    <li><strong>What are some existing solutions of AI-assisted hiring?</strong></li>
+                    <li><strong>How are job seekers currently using AI to look for jobs?</strong></li>
+                    <li><strong>How are employers currently using AI to look for candidates?</strong></li>
+                    <li><strong>What concerns in ethics, trust, and bias emerge from AI-assisted hiring?</strong></li>
+                </ol> -->
+            </div>
+            <h3 class="section-heading">Impacts</h3>
+            <div class="design-impacts">
+                <ol>
+                    <li><strong>Gained buy-in from broader Indeed Employer Labs andniwog Indeed Senior Director of market strategy</strong></li>
+                    <li><strong>Inlfuenced outside team (Indeed Jobs) product developement</strong></li>
+                </ol>
+             <img src="../assets/images/indeed-impact.JPG" alt="Project Scope on Early Stage Hiring" style="width: 100%; max-width: 1100px; height: auto; margin: 2rem auto; display: block; border-radius: 8px;">
+            </div>
+            <!-- <ul style="margin-bottom: 2rem; line-height: 1.7;">
+                <li><strong>Understand</strong> the current landscape and application of AI in hiring: service and products from Indeed’s competitors (Competitive Analysis)</li>
+                <li><strong>Explore</strong> ethical considerations in using AI to hire (Reddit Analysis & Literature Review)</li>
+                <li><strong>Identify</strong> the current pain points of SMB employers in early stage of hiring (In-depth User Interview)</li>
+            </ul> -->
+            <!-- <p style="margin-top: 2rem; text-align: center; font-style: italic; color: var(--text-secondary);">Features currently implemented in SAP Revenue Growth Management</p> -->
+            <h3 class="section-heading">Impact</h3>
+        </section>
+
+        <!-- Research Challenges & Learnings -->
+        <section class="section">
+            <h2 class="section-title">Challenges & Key Learnings</h2>
+            <div class="key-learnings">
+                <div class="learning-section">
+                    <h4>Research Challenges</h4>
+                    <ul>
+                        <li><strong>Market Uncertainty:</strong> Inherent unpredictability in promotion planning made it challenging to anticipate user needs and design effective solutions</li>
+                        <li><strong>Process Diversity:</strong> Varied policies and workflows across different CPG companies led to inconsistent user approaches in plan maintenance</li>
+                    </ul>
                 </div>
                 
-                <div class="insights-grid">
-                    <div class="insight-card">
-                        <div class="insight-title">Stakeholder Alignment</div>
-                        <div class="insight-description">Job seekers and employers sometimes have different expectations about recruiting tools, requiring balanced design approaches</div>
-                    </div>
-                    <div class="insight-card">
-                        <div class="insight-title">Data Privacy & Consent</div>
-                        <div class="insight-description">Resume citations raise questions about consent and data usage, requiring clear policies on data sourcing and retention</div>
-                    </div>
-                    <div class="insight-card">
-                        <div class="insight-title">Accessibility Concerns</div>
-                        <div class="insight-description">While AI may help some candidates, those unfamiliar with AI language parsing may be disadvantaged</div>
-                    </div>
-                    <div class="insight-card">
-                        <div class="insight-title">Human Judgment Balance</div>
-                        <div class="insight-description">Need to balance AI efficiency with human judgment to avoid over-reliance on automated screening</div>
-                    </div>
+                <div class="learning-section">
+                    <h4>Professional Development Outcomes</h4>
+                    <ul>
+                        <li><strong>Stakeholder Communication:</strong> Enhanced ability to translate research findings into strategic language for executive decision-making through proactive collaboration with senior leadership</li>
+                        <li><strong>Research Infrastructure:</strong> Established a comprehensive UX research repository and knowledge management system to improve accessibility and future research efficiency</li>
+                        <li><strong>User Recruitment Systems:</strong> Developed sustainable end-user referral programs and participant databases for ongoing research initiatives</li>
+                    </ul>
                 </div>
             </div>
+        </section>
 
-            <!-- Reflection -->
-            <div class="content-section">
-                <h2 class="section-title">Reflection & Future Work</h2>
-                <div class="section-content">
-                    <p>This project provided valuable insights into the complexities of AI-assisted hiring. Key learnings and future directions include:</p>
-                </div>
-                
-                <div class="process-grid">
-                    <div class="process-card">
-                        <div class="process-icon">👥</div>
-                        <div class="process-title">Broader User Research</div>
-                        <div class="process-description">Future work should include more job seeker perspectives to create balanced solutions that serve all stakeholders</div>
-                    </div>
-                    <div class="process-card">
-                        <div class="process-icon">📊</div>
-                        <div class="process-title">Quantitative Validation</div>
-                        <div class="process-description">Incorporate survey methods and quantitative research to validate design concepts with larger user groups</div>
-                    </div>
-                    <div class="process-card">
-                        <div class="process-icon">⚖️</div>
-                        <div class="process-title">Fairness Definition</div>
-                        <div class="process-description">Learned that fairness in AI hiring is contextual and social, requiring ongoing dialogue with all stakeholders</div>
-                    </div>
-                    <div class="process-card">
-                        <div class="process-icon">🔧</div>
-                        <div class="process-title">Partial Automation</div>
-                        <div class="process-description">Discovered that recruiters prefer AI assistance rather than full automation, valuing their domain expertise</div>
-                    </div>
-                </div>
+        <!-- Next Steps -->
+        <section class="next-project">
+            <h2 style="margin-bottom: 1rem;">Explore Additional Research Work</h2>
+            <p style="margin-bottom: 2rem; color: var(--text-secondary);">Discover other research projects demonstrating my systematic approach to solving complex user and business challenges.</p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="../#portfolio" class="cta-button">View All Projects</a>
+                <a href="../ai-hiring-indeed/" class="cta-button" style="background: transparent; color: var(--primary-color); border: 2px solid var(--primary-color);">AI Hiring Research</a>
             </div>
-        </div>
-    </section>
-    </section>
-
-    <!-- Disclaimer Section -->
-    <section class="disclaimer-section">
-        <div class="container">
-            <div style="text-align: start; margin: 0 auto;">
-                <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6;">
-                    <strong>*Disclaimer:</strong> The Indeed logo is a trademark of Indeed, Inc. This case study was conducted for academic purposes as part of a university research project. All research findings and design recommendations are independent work and do not represent official Indeed positions or products.
-                </p>
-            </div>
-        </div>
-    </section>
+        </section>
+    </div>
 
     <!-- Footer -->
-    <footer>
+    <footer role="contentinfo">
         <div class="container">
             <div class="social-links">
-                <a href="#" aria-label="Email">📧</a>
-                <a href="#" aria-label="LinkedIn">💼</a>
-                <a href="#" aria-label="Twitter">🐦</a>
-                <a href="#" aria-label="GitHub">📱</a>
+                <a href="mailto:jialinli2022@gmail.com" aria-label="Email">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                        <polyline points="22,6 12,13 2,6"/>
+                    </svg>
+                </a>
+                <a href="https://www.linkedin.com/in/jessamine-li/" aria-label="LinkedIn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                        <rect x="2" y="9" width="4" height="12"/>
+                        <circle cx="4" cy="4" r="2"/>
+                    </svg>
+                </a>
             </div>
             <p>&copy; 2025 Jessamine Li. All rights reserved.</p>
         </div>
     </footer>
 
     <script>
-        // Safari-optimized JavaScript
+        // Reuse navigation and scroll behavior from main site
         (function() {
             'use strict';
 
@@ -404,7 +340,7 @@
 
             // Check if Safari
             const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-            
+
             // Utility functions
             const throttle = (func, delay) => {
                 let timeoutId;
@@ -439,83 +375,32 @@
                 }
             }, CONFIG.throttleDelay);
 
-            // Enhanced navigation link handling
-            function setupNavigationLinks() {
-                const navLinks = document.querySelectorAll('a[href^="#"]');
-                
-                navLinks.forEach(anchor => {
-                    anchor.addEventListener('click', function(e) {
+            // Enhanced anchor link handling
+            function setupAnchorLinks() {
+                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                    anchor.addEventListener('click', function (e) {
                         e.preventDefault();
-                        
-                        const targetId = this.getAttribute('href');
-                        const target = document.querySelector(targetId);
-                        
-                        if (!target) return;
-
-                        const targetY = Math.max(0, target.offsetTop - CONFIG.navbarHeight - CONFIG.scrollOffset);
-                        
-                        window.scrollTo({
-                            top: targetY,
-                            behavior: 'smooth'
-                        });
-                        
-                        if (history.pushState) {
-                            history.pushState(null, null, targetId);
+                        const target = document.querySelector(this.getAttribute('href'));
+                        if (target) {
+                            const targetY = Math.max(0, target.offsetTop - CONFIG.navbarHeight - CONFIG.scrollOffset);
+                            window.scrollTo({
+                                top: targetY,
+                                behavior: 'smooth'
+                            });
                         }
                     });
                 });
             }
 
-            // Mobile menu toggle
-            function setupMobileMenu() {
-                const mobileToggle = document.querySelector('.mobile-menu-toggle');
-                const navLinks = document.querySelector('.nav-links');
+            // Initialize
+            function init() {
+                setupAnchorLinks();
+                window.addEventListener('scroll', handleNavbarScroll, { passive: true });
                 
-                if (mobileToggle && navLinks) {
-                    mobileToggle.addEventListener('click', function() {
-                        navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-                    });
-                }
-            }
-
-            // Scroll animations
-            function setupScrollAnimations() {
-                if (!('IntersectionObserver' in window)) {
-                    // Fallback for older browsers
-                    document.querySelectorAll('.insight-card, .team-member, .process-card').forEach(el => {
-                        el.style.opacity = '1';
-                        el.style.transform = 'translateY(0)';
-                    });
-                    return;
-                }
-
-                const observerOptions = {
-                    threshold: 0.1,
-                    rootMargin: '0px 0px -50px 0px'
-                };
-
-                const animationObserver = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.style.opacity = '1';
-                            entry.target.style.transform = 'translateY(0)';
-                            animationObserver.unobserve(entry.target);
-                        }
-                    });
-                }, observerOptions);
-
-                // Set initial state and observe elements
-                document.querySelectorAll('.insight-card, .team-member, .process-card, .impact-card').forEach(el => {
-                    el.style.opacity = '0';
-                    el.style.transform = 'translateY(20px)';
-                    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                    animationObserver.observe(el);
-                });
-            }
-
-            // Safari-specific fixes
-            function applySafariFixes() {
+                // Safari-specific initialization
                 if (isSafari) {
+                    console.log('Safari detected - applying case study optimizations');
+                    
                     // Fix Safari viewport height issues
                     const setVH = () => {
                         const vh = window.innerHeight * 0.01;
@@ -525,30 +410,6 @@
                     setVH();
                     window.addEventListener('resize', setVH);
                     window.addEventListener('orientationchange', setVH);
-
-                    // Force background repaint on Safari
-                    const hero = document.querySelector('.hero');
-                    if (hero) {
-                        setTimeout(() => {
-                            hero.style.transform = 'translateZ(0)';
-                            hero.style.webkitTransform = 'translateZ(0)';
-                        }, 100);
-                    }
-                }
-            }
-
-            // Initialize everything
-            function init() {
-                setupNavigationLinks();
-                setupMobileMenu();
-                setupScrollAnimations();
-                applySafariFixes();
-                
-                window.addEventListener('scroll', handleNavbarScroll, { passive: true });
-                
-                // Safari-specific initialization
-                if (isSafari) {
-                    console.log('Safari detected - applying optimizations');
                 }
             }
 
