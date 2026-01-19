@@ -62,14 +62,15 @@
 }
 
 .section {
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
 }
 
 .section-title {
     font-size: 2rem;
     font-weight: 700;
     color: var(--text-primary);
-    margin-bottom: 1.5rem;
+    margin-top: 6rem;
+    margin-bottom: 2.5rem;
     position: relative;
     padding-bottom: 0.5rem;
     text-align: left;
@@ -153,7 +154,9 @@
 
 .section-heading {
     font-size: 1.5rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1.25rem;
+    margin-top: 2.5rem;
+    font-weight: 500;
 }
 
 /* Methodology Grid */
@@ -161,12 +164,12 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1.5rem;
-    margin: 2rem 0;
+    margin: 2.5rem 0;
 }
 
 .method-card {
     background: white;
-    padding: 2rem;
+    padding: 1.5rem 2rem;
     border-radius: 1rem;
     box-shadow: var(--shadow);
     text-align: center;
@@ -199,12 +202,12 @@
 .findings-grid {
     display: grid;
     gap: 2rem;
-    margin: 2rem 0;
+    margin: 2.5rem 0;
 }
 
 .finding-card {
     background: white;
-    padding: 2.5rem;
+    padding: 2rem 2.5rem;
     border-radius: 1.5rem;
     box-shadow: var(--shadow);
     transition: all 0.3s ease;
@@ -220,8 +223,8 @@
 }
 
 .finding-title {
-    font-size: 1.5rem;
-    font-weight: 700;
+    font-size: 1.25rem;
+    font-weight: 600;
     color: var(--text-primary);
     margin-bottom: 1rem;
 }
@@ -229,14 +232,14 @@
 /* Recommendations */
 .recommendation {
     background: linear-gradient(135deg, #e6f7ff 0%, #f0f9ff 100%);
-    padding: 1.5rem;
+    padding: 1.25rem 1.5rem;
     border-radius: 1rem;
     margin-top: 1rem;
     border-left: 4px solid #1890ff;
 }
 
 .recommendation-title {
-    font-weight: 700;
+    font-weight: 600;
     color: #1890ff;
     margin-bottom: 0.5rem;
 }
@@ -245,14 +248,14 @@
 .impact-metrics {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-    margin: 2rem 0;
+    gap: 2rem;
+    margin: 2.5rem 0;
 }
 
 .impact-card {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: var(--primary-color);
     color: white;
-    padding: 2.5rem;
+    padding: 2rem 2.5rem;
     border-radius: 1.5rem;
     text-align: center;
     transition: all 0.3s ease;
@@ -281,19 +284,19 @@
 /* Next Project Section */
 .next-project {
     background: var(--secondary-color);
-    padding: 3rem;
+    padding: 2.5rem 3rem;
     border-radius: 1.5rem;
     text-align: center;
-    margin-top: 4rem;
+    margin-top: 3rem;
 }
 
 /* Disclaimer */
 .disclaimer {
     background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 50%);
     border: 1px solid #ffeaa7;
-    padding: 1.5rem;
+    padding: 1.25rem 1.5rem;
     border-radius: 1rem;
-    margin: 2rem 0;
+    margin: 2.5rem 0;
     font-size: 0.875rem;
     color: #856404;
     border-left: 4px solid #f39c12;
@@ -302,9 +305,9 @@
 /* Research Questions */
 .research-questions {
     background: var(--secondary-color);
-    padding: 2.5rem;
+    padding: 2rem 2.5rem;
     border-radius: 1.5rem;
-    margin: 2rem 0;
+    margin: 2.5rem 0;
 }
 
 .research-questions ol {
@@ -341,14 +344,14 @@
 /* Key Learnings */
 .key-learnings {
     background: white;
-    padding: 2.5rem;
+    padding: 2rem 2.5rem;
     border-radius: 1.5rem;
     box-shadow: var(--shadow);
-    margin: 2rem 0;
+    margin: 2.5rem 0;
 }
 
 .learning-section {
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 }
 
 .learning-section:last-child {

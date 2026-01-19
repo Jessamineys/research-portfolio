@@ -53,7 +53,7 @@
     <div class="case-content">
         <!-- Problem Space -->
         <section class="section">
-            <h2 class="section-title">Problem Space</h2>
+            <h2 class="section-title" style="margin-top: -2rem;">Problem Space</h2>
             <p>In a <strong>$500+ billion</strong> global market</strong>, inefficient promotion planning processes directly affect individual performance metrics and overall company profitability, with <strong>67%</strong> of users reporting the current planning process as burdensome.</p>
             <img src="../assets/images/rgm-summary.jpg" alt="Revenue Growth Management Summary" style="width: 100%; max-width: 800px; height: auto; margin: 2rem auto; display: block; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
             <div class="problem-statement">
@@ -111,6 +111,7 @@
             </div>
 
             <h3 class="section-heading">My Role</h3>
+            <p style="margin-bottom: 2rem; margin-top: 0.1rem">I am the UX Researcher overseeing the project and collabborated with product PM lead & UX lead to identify insights and low-hanging fruits.​</p>
             <img src="../assets/images/rgm-role.png" alt="My Role Process Map" style="width: 100%; max-width: 1100px; height: auto; margin: 1rem auto; display: block;">  
         </section>
 
@@ -118,43 +119,22 @@
         <section class="section">
             <h2 class="section-title">Research Execution</h2>
             <p style="margin-bottom: 2rem;">I conducted comprehensive research with <strong>5 end-users from CPG companies generating over $1 billion in annual revenue</strong>. Participants were recruited through multiple channels including Microsoft Teams, LinkedIn Sales Navigator, Respondent.io, with collaboration facilitated through Mural.</p>
-            
-            <h3 class="section-heading">Participant Profile</h3>
-            <div style="background: var(--secondary-color); padding: 2rem; border-radius: 1rem; margin: 2rem 0;">
-                <p style="margin-bottom: 1rem;"><strong>Target User Persona: "Igor"</strong> - Sales managers responsible for overseeing CPG product sales to assigned customers, managing promotion plans to ensure compliance and achieve business goals.</p>
-                <p style="margin-bottom: 1rem;"><strong>Key Frustration:</strong> Navigating multiple disconnected systems to manage customer relationships and promotion plans, creating operational inefficiency.</p>
-                <p><strong>Primary Need:</strong> Streamlined tools to complete planning and editing tasks efficiently, enabling more time for customer relationship building.</p>
-            </div>
+            <!-- <div style="background: var(--secondary-color); padding: 2rem; border-radius: 1rem; margin: 1.5rem 0;"> -->
+                 <img src="../assets/images/rgm-persona-detail.png" alt="Participant Profile" style="width: 80%; max-width: 1100px; height: auto; margin: 1rem auto; display: block;">  
+            <!-- </div> -->
         </section>
 
         <!-- Key Findings -->
         <section class="section">
             <h2 class="section-title">Key Findings & Strategic Recommendations</h2>
             <div class="findings-grid">
+            <h3 class="section-heading" style="margin-top: 1rem; margin-bottom: -2rem;"><em>Objective 1:  Understand how Sales Managers edit and update a spend activity</em></h3>
                 <div class="finding-card">
-                    <div class="finding-title">Universal Microsoft Excel Integration Dependency</div>
-                    <p>All 5 participants utilize Microsoft Excel as a critical touchpoint throughout the editing and updating process, particularly for specific data category management.</p>
+                    <div class="finding-title">Heavy Reliance on Microsoft Excel for Promotion Data Management</div>
+                    <p>All 5 participants utilize Microsoft Excel as a critical touchpoint throughout the editing and updating process, particularly for specific promotion guidelines and guardrails management.
                     <div class="recommendation">
                         <div class="recommendation-title">Strategic Recommendation</div>
-                        <p><strong>New Feature: Microsoft Excel Upload Integration</strong> – Incorporate seamless Excel upload capability within both creation and edit workflows to eliminate manual data transfer steps.</p>
-                    </div>
-                </div>
-
-                <div class="finding-card">
-                    <div class="finding-title">Dynamic Guardrail Changes Prevent Full Automation</div>
-                    <p>Annual spending activities are subject to mid-year guardrail modifications due to market volatility and policy adjustments, making complete automation unreliable.</p>
-                    <div class="recommendation">
-                        <div class="recommendation-title">Strategic Recommendation</div>
-                        <p><strong>New Feature: Flexible Configuration Framework</strong> – Develop an adaptable system allowing user-controlled adjustments within established guardrail parameters.</p>
-                    </div>
-                </div>
-
-                <div class="finding-card">
-                    <div class="finding-title">Complete Distrust in Automated Plan Maintenance</div>
-                    <p>100% of users expressed no confidence in automated plan maintenance, requiring manual intervention for quality assurance and control.</p>
-                    <div class="recommendation">
-                        <div class="recommendation-title">Strategic Recommendation</div>
-                        <p><strong>Roadmap Adjustment: Deprioritize Full Automation</strong> – Shift focus from automation to user-assisted workflows until co-innovation partners demonstrate demand.</p>
+                        <p>[New feature] MS Excel Upload — Incorporate seamless MS Excel upload & extraction capability within both creation and edit workflows to reduce manual data transfer steps.</p>
                     </div>
                 </div>
 
@@ -163,7 +143,27 @@
                     <p>Users apply uniform editing approaches regardless of promotion duration, indicating opportunity for workflow standardization.</p>
                     <div class="recommendation">
                         <div class="recommendation-title">Strategic Recommendation</div>
-                        <p><strong>Design Strategy: Unified Workflow Architecture</strong> – Eliminate differentiated editing workflows in favor of a single, optimized editing experience.</p>
+                        <p>[Roadmap adjustment] Unify Workflows — Not to differentiate editing workflows.</p>
+                    </div>
+                </div>
+            
+                <h3 class="section-heading" style="margin-top: 1.5rem; margin-bottom: -2rem;"><em>Objective 2: Understand the potential automations in editing and updating</em></h3>
+
+                <div class="finding-card">
+                    <div class="finding-title">Dynamic Guardrail Changes Prevent Full Automation</div>
+                    <p>Annual spending activities are subject to mid-year guardrail modifications due to market volatility and policy adjustments, making complete automation unreliable.</p>
+                    <div class="recommendation">
+                        <div class="recommendation-title">Strategic Recommendation</div>
+                        <p>[New feature] Configuration Framework — Propose an adaptable system allowing user-controlled adjustments within previously-researchered guardrail parameters.</p>
+                    </div>
+                </div>
+
+                <div class="finding-card">
+                    <div class="finding-title">Low Trust in Automated Plan Maintenance</div>
+                    <p>100% of users expressed no confidence in automated plan maintenance, requiring manual intervention for quality assurance and control.</p>
+                    <div class="recommendation">
+                        <div class="recommendation-title">Strategic Recommendation</div>
+                        <p>[Roadmap adjustment] Deprioritize Automation — Shift focus from automation to user-assisted workflows until brought up by co-innovation partners.</p>
                     </div>
                 </div>
             </div>
@@ -187,8 +187,8 @@
 
         <!-- Research Challenges & Learnings -->
         <section class="section">
-            <h2 class="section-title">Challenges & Key Learnings</h2>
-            <div class="key-learnings">
+            <h2 class="section-title">Key learnings from the project…</h2>
+            <div class="key-learnings" style = "margin-top: -1.5rem; margin-bottom: 9rem; ">
                 <div class="learning-section">
                     <h4>Research Challenges</h4>
                     <ul>
