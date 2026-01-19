@@ -253,7 +253,7 @@
 }
 
 .impact-card {
-    background: var(--primary-color);
+    /* background: var(--primary-color); */
     color: white;
     padding: 2rem 2.5rem;
     border-radius: 1.5rem;
