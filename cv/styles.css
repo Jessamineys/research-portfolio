@@ -71,6 +71,19 @@ body {
 }
 
 .content { display: grid; gap: 2rem; }
+.pdf-content {
+  display: block;
+}
+
+.pdf-viewer {
+  width: 100%;
+  height: calc(100vh - 9rem);
+  min-height: 900px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--white);
+  box-shadow: var(--shadow);
+}
 .section { background: var(--white); border: 1px solid var(--border); border-radius: 16px; padding: 1.25rem; box-shadow: var(--shadow); }
 .section > h2 { font-size: 1.1rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 1rem; }
 
@@ -192,6 +205,10 @@ nav.scrolled {
     width: 100%;
     text-align: center;
   }
+  .pdf-viewer {
+    min-height: 70vh;
+    height: 75vh;
+  }
 }
 
 @media (max-width: 768px) {
@@ -207,6 +224,11 @@ nav.scrolled {
   }
   .item {
     padding: 0.75rem;
+  }
+  .pdf-viewer {
+    min-height: 65vh;
+    height: 70vh;
+    border-radius: 12px;
   }
 }
 
